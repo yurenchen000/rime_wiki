@@ -21,11 +21,11 @@
 
 > 博瑀是只喵：鼠须管，极客的输入法！
 
-> ![](https://raw.githubusercontent.com/rime/docs/master/images/user-quotes/squirrel-in-azure.jpg)
+> ![](https://github.com/rime/docs/raw/master/images/user-quotes/squirrel-in-azure.jpg)
 
 > 那只呆头鹅：「小狼毫输入法」，真不错。我是冲着方括号选的这款神级输入法。给大家推荐。 
 
-> ![](https://raw.githubusercontent.com/rime/docs/master/images/user-quotes/weasel-in-lost-temple.jpg)
+> ![](https://github.com/rime/docs/raw/master/images/user-quotes/weasel-in-lost-temple.jpg)
 
 > 明意呀：yes 我太聪明了！鼠须管设置成简体，按control + ` 这三个就可以设置了 
 
@@ -37,7 +37,7 @@
 
 > 郭宇：「鼠须管」输入法输入引号的这个体验很赞~ 「」
 
-> ![](https://raw.githubusercontent.com/rime/docs/master/images/user-quotes/rime-users-quotes.jpg)
+> ![](https://github.com/rime/docs/raw/master/images/user-quotes/rime-users-quotes.jpg)
 
 > SuQin：鼠须管输入法真好用啊真好用。。。 
 
@@ -49,7 +49,7 @@
 
 > 王中王kingofwang：最近MAC下新出的输入法“鼠须管”很火，今天看了一下，原来是跨平台的输入法框架，只是在Window下叫“小狼毫”了，连五笔都支持整句输入了，还真流畅得有些不习惯呢[偷笑]
 
-> ![](https://raw.githubusercontent.com/rime/docs/master/images/user-quotes/rime-wubi-user.jpg)
+> ![](https://github.com/rime/docs/raw/master/images/user-quotes/rime-wubi-user.jpg)
 
 > 携隐：自从更新了输入法，我写日记的频率和长度都顿时大幅提升。。。之前因为※※※※※的烂中文输入，已经越写越少了。所以说一个小小但却贴心的消费者技术应用意义多么重大，多么让人感激涕零啊！
 
@@ -70,7 +70,7 @@
 
 > Mr-Sunshine_：刚刚在威锋看到一款mac的输入法，很突然的叫做‘鼠须管’，诶妈呀，这字儿好像是打错了，但事实上没有额。。。 
 
-> ![](https://raw.githubusercontent.com/rime/docs/master/images/user-quotes/rime-users-uncertainty.jpg)
+> ![](https://github.com/rime/docs/raw/master/images/user-quotes/rime-users-uncertainty.jpg)
 
 ### 「封铀」試玩心得
 
@@ -92,7 +92,7 @@
 
 > ……另外，「小狼毫」居然还提供了令人倍感亲切的设定：
 
-> ![](https://raw.githubusercontent.com/rime/docs/master/images/user-quotes/rime-starcraft-player.jpg)
+> ![](https://github.com/rime/docs/raw/master/images/user-quotes/rime-starcraft-player.jpg)
 
 ### 十三叔點評
 
@@ -121,7 +121,7 @@
 
 > @永秉FDU：作为复旦的学生，无数次地将母校名字写错，这种错误是无法原谅的。尤其是在复旦正门口的海报栏里犯这种错误，就好比在你母亲脸上抹黑。强烈建议@复旦大学 将正确书写本校校名列入新生入学教育的必修内容，或者至少告知新生：不会使用繁体字索性就不要用。
 
-> ![](https://raw.githubusercontent.com/rime/docs/master/images/user-quotes/rime-users-story.jpg)
+> ![](https://github.com/rime/docs/raw/master/images/user-quotes/rime-users-story.jpg)
 
 註：[復旦大學](http://zh.wikipedia.org/wiki/%E5%A4%8D%E6%97%A6%E5%A4%A7%E5%AD%A6) 是中國最著名的大學之一。復旦的校名取自《尚書大傳》「日月光華，旦復旦兮」一句，以每天都充滿希望的日出，寄寓着興學救國的宏大理想。引用此故事的用意是讓更多同學熟悉校名的正確寫法： *复旦／復旦*
 
