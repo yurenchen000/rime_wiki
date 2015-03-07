@@ -136,27 +136,25 @@ Rime輸入法獨門絕活之「拼寫運算」，是按規則改寫編碼的形�
     Sy = P<y>(Sx) = { y(b) -> a | for (b -> a) in (B -> A) } = (C -> A)
     Sz = P<z>(Sy) = { z(c) -> a | for (c -> a) in (C -> A) } = (D -> A)
     P[x,y,z](Sa) = Sz
-}}}
 
 ### 在Rime輸入方案中的用法
 
-
-  * 一例：倉頡輸入方案(cangjie5.schema.yaml)，在編碼區回顯倉頡字母
+一例：倉頡輸入方案(cangjie5.schema.yaml)，在編碼區回顯倉頡字母
 
     translator:
       preedit_format:
         - xlit|abcdefghijklmnopqrstuvwxyz|日月金木水火土竹戈十大中一弓人心手口尸廿山女田難卜符|
 
-  * 一例：朙月拼音(luna_pinyin.schema.yaml)，顯示拼音字母“ü”
+一例：朙月拼音(luna_pinyin.schema.yaml)，顯示拼音字母“ü”
 
     translator:
       preedit_format:
         - xform/([nl])v/$1ü/
 
-    這一處，拼寫運算的作用對象是編碼回顯區的拼音串，串中可能包含多個拼音音節，並已經自動插入了隔音符號。
-    爲了替換該拼音段中所有匹配的字母，模式中並未用錨點匹配音節的頭尾位置。
+這一處，拼寫運算的作用對象是編碼回顯區的拼音串，串中可能包含多個拼音音節，並已經自動插入了隔音符號。
+爲了替換該拼音段中所有匹配的字母，模式中並未用錨點匹配音節的頭尾位置。
 
-  * 一例：朙月拼音(luna_pinyin.schema.yaml)，定義簡拼、容錯拼寫。
+一例：朙月拼音(luna_pinyin.schema.yaml)，定義簡拼、容錯拼寫。
 
     speller:
       algebra:
@@ -170,10 +168,10 @@ Rime輸入法獨門絕活之「拼寫運算」，是按規則改寫編碼的形�
         - derive/ao$/oa/                  # 容錯 hoa = hao,...
         - derive/([iu])a(o|ng?)$/a$1$2/   # 容錯 tain = tian,...
 
-    編譯輸入方案時，將運用這組運算規則完成音節表上的投影，求得可解析爲音節代碼的有效拼寫集合；
-    輸入過程中，這組有效拼寫決定着輸入碼的音節切分方式。
+編譯輸入方案時，將運用這組運算規則完成音節表上的投影，求得可解析爲音節代碼的有效拼寫集合；
+輸入過程中，這組有效拼寫決定着輸入碼的音節切分方式。
 
-  * 一例：在拼音輸入法中定義模糊音 zh=z, ch=c, sh=s, n=l, en=eng, in=ing
+一例：在拼音輸入法中定義模糊音 zh=z, ch=c, sh=s, n=l, en=eng, in=ing
 
     speller:
       algebra:
