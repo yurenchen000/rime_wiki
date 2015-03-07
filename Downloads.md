@@ -18,14 +18,14 @@
 
 適用於 Windows XP SP3, 32/64位 Windows 7
 
-  * [小狼毫 0.9.30](https://bintray.com/lotem/rime/Weasel)〔[下載](http://dl.bintray.com/lotem/rime/weasel-0.9.30.0-installer.exe?direct)〕〔[更新日誌](http://rimeime.github.io/weasel-update/)〕
+  * [小狼毫 0.9.30](https://bintray.com/lotem/rime/Weasel)〔[下載](http://dl.bintray.com/lotem/rime/weasel-0.9.30.0-installer.exe?direct)〕〔[更新日誌](http://rime.github.io/weasel-update/)〕
   * [小狼毫擴展方案集](https://bintray.com/lotem/rime/weasel-expansion)〔[下載](http://dl.bintray.com/lotem/rime/weasel-expansion-0.9.18.0.exe?direct)〕
 
 ### 鼠鬚管 | Squirrel
 
 適用於64位 Mac OS X 10.7+
 
-  * [鼠鬚管 0.9.26.2](https://bintray.com/lotem/rime/Squirrel)〔[下載](http://dl.bintray.com/lotem/rime/Squirrel-0.9.26.2.zip)〕〔[更新日誌](http://rimeime.github.io/squirrel-update/)〕
+  * [鼠鬚管 0.9.26.2](https://bintray.com/lotem/rime/Squirrel)〔[下載](http://dl.bintray.com/lotem/rime/Squirrel-0.9.26.2.zip)〕〔[更新日誌](http://rime.github.io/squirrel-update/)〕
   * 第三方圖形化配置工具：[SCU](https://github.com/neolee/SCU)
 
 ### 其他
