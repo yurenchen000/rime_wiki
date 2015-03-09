@@ -510,7 +510,7 @@ https://gist.github.com/2944319
 
 參考 https://gist.github.com/2309739 把 `emoji` 加入輸入方案選單；
 
-切換到 `emoji` 輸入方案，即可通過拼音代碼輸入表情符號。[查看符號表](https://github.com/rime/docs/raw/master/images/emoji-chart.png)
+切換到 `emoji` 輸入方案，即可通過拼音代碼輸入表情符號。[查看符號表](https://github.com/rime/home/raw/master/images/emoji-chart.png)
 
 輸入 `all` 可以列出全部符號，符號後面的括弧裏標記其拼音代碼。
 
