@@ -484,7 +484,7 @@ https://gist.github.com/2390510
 
 https://gist.github.com/2320943
 
-【明月拼音・简化字／臺灣正體／語句流】也適用，
+【明月拼音·简化字／臺灣正體／語句流】也適用，
 只須將模板保存到 `luna_pinyin_simp.custom.yaml` 、 `luna_pinyin_tw.custom.yaml` 或 `luna_pinyin_fluency.custom.yaml` 。
 
 对比模糊音定製模板與[【朙月拼音】方案原件](https://github.com/lotem/brise/blob/master/preset/luna_pinyin.schema.yaml)，
@@ -522,7 +522,7 @@ http://gist.github.com/3705586
 
 【小狼毫】用家請到[[下載頁|Downloads]]取得「擴展方案集」。
 
-安裝完成後，執行輸入法設定，添加【五筆・簡入繁出】輸入方案。
+安裝完成後，執行輸入法設定，添加【五筆·簡入繁出】輸入方案。
 
 其他版本請參考這篇說明：
 
