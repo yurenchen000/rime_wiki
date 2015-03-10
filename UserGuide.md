@@ -11,6 +11,7 @@
 ## 第三方文檔
 
   * [鼠鬚管試玩心得](http://bbs.weiphone.com/read-htm-tid-5108521.html)／lionhoho
+  * [致第一次安裝 RIME 的你](http://tieba.baidu.com/p/3288634121)／半月湾C
 
 ## 使用方案選單
 
