@@ -10,7 +10,7 @@
 
 舊版本：適用於不支持 C++11 的編譯器（gcc<4.8）
 
-  * [brise-0.30](http://code.google.com/p/rimeime/downloads/detail?name=brise-0.30.tar.gz)，[librime-1.0](http://code.google.com/p/rimeime/downloads/detail?name=librime-1.0.tar.gz)，[ibus-rime-1.0](http://code.google.com/p/rimeime/downloads/detail?name=ibus-rime-1.0.tar.gz)
+  * [brise-0.30](http://dl.bintray.com/lotem/rime/brise-0.30.tar.gz)，[librime-1.0](http://dl.bintray.com/lotem/rime/librime-1.0.tar.gz)，[ibus-rime-1.0](http://dl.bintray.com/lotem/rime/ibus-rime-1.0.tar.gz)
 
 另有 csslayer 君開發、基於 fcitx 輸入法框架的  [fcitx-rime](https://github.com/fcitx/fcitx-rime)
 
@@ -25,7 +25,7 @@
 
 適用於64位 Mac OS X 10.7+
 
-  * [鼠鬚管 0.9.26.2](https://bintray.com/lotem/rime/Squirrel)〔[下載](http://dl.bintray.com/lotem/rime/Squirrel-0.9.26.2.zip)〕〔[更新日誌](http://rime.github.io/squirrel-update/)〕
+  * [鼠鬚管 0.9.26.2](https://bintray.com/lotem/rime/Squirrel)〔[下載](http://dl.bintray.com/lotem/rime/Squirrel-0.9.26.2.zip)〕〔[更新日誌](http://rime.github.io/release/squirrel/)〕
   * 第三方圖形化配置工具：[SCU](https://github.com/neolee/SCU)
 
 ### 其他
