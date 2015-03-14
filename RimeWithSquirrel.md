@@ -2,7 +2,7 @@
 
 ## Build Squirrel from Scratch
 
-0.  You should already have installed cmake, git and Xcode with Command Line Tools.
+0.  You should already have installed cmake>=3.0, git and Xcode with Command Line Tools.
 
 1.  Install dependencies with [Homebrew](http://mxcl.github.com/homebrew/).
 
