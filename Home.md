@@ -8,7 +8,7 @@ Rime Input Method Engine - riming with your keystrokes.
 
 ### 也來瞧瞧
 
-如何聰明的輸入法 [[懂我心意|MoodCollection]]
+何以聰明的輸入法 [[懂我心意|MoodCollection]]
 
 ### 也來試試
 
