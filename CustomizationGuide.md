@@ -261,7 +261,7 @@ Rime 中的過濾器組件 simplifier，完成對候選詞的繁簡轉換。
     # luna_pinyin.custom.yaml
     
     patch:
-      switcher/@0/reset: 1  #表示將 switcher 列表中的第一個元素（即 ascii_mode 開關）的初始值重設爲狀態1（即「英文」）。
+      "switcher/@0/reset": 1  #表示將 switcher 列表中的第一個元素（即 ascii_mode 開關）的初始值重設爲狀態1（即「英文」）。
 
 
 ### 一例、定製方案選單
