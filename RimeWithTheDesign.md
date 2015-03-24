@@ -17,12 +17,13 @@ Rime稱其為「服務／Service」，形式為一個無介面表現的後臺程
 Rime的Frontend/Backend模型，依照ibus、IMK等輸入法框架來設計：Frontend不含輸入邏輯，甚至不負責繪製輸入法介面。因此會比較容易適配現有的輸入法框架，不需要自己寫很多代碼。
 
 在服務中，會為每一個客戶建立一個輸入法「會話／Session」。從功能上講，會話是將一系列按鍵消息變（Convert）為文字的問（Request）答（Response）過程。
+
 技術上講，會話會負責搞定輸入法前端與服務之間的跨進程通信，同時在服務端為前端所代表的客戶分配必要的資源。這資源主要是指一部有狀態的、懂得所有輸入轉換邏輯的輸入法引擎「Engine」。
 
 現在所寫的Rime庫，不做那框架部份，專注於輸入引擎的實現。
 名字也叫「中州韻輸入法引擎／RIME」嘛。
 
-這部份定義在代碼目錄 librime/ 、C++ namespace rime 裡面。
+這部份定義的代碼是 [rime/librime](https://github.com/rime/librime)，under C++ namespace `rime`。
 拋開實際的輸入法框架，俺先寫個控制台程序 `RimeConsole` 來模擬輸入，觀察Engine的輸出，以驗證其功能是否符合設計。
 
 ## 引擎
@@ -51,7 +52,7 @@ Engine 對象，便是 Session 需要直接操作的介面。
 `boost::factory`要求較高版本的Boost庫，所以我還是用了自家釀造的一套設施來做組件的包裝。
 
 原則是，Rime中完成特定功能的對象，若只有一種實現方法，就寫個C++類／class；若有多種實現方法，就寫個「Rime類」／`rime::Class`。示意：
-{{{
+```
 class Processor : public Class<Processor, Engine*> {
  public:
   Processor(Engine *engine) : engine_(engine) {}
@@ -61,11 +62,11 @@ class Processor : public Class<Processor, Engine*> {
  private:
   Engine *engine_;
 };
-}}}
+```
 
 然後，大家就可以寫各式Processor的實現啦……
 當然，還要把每一種實現註冊為具名的「組件」。
-{{{
+```
 class ToUpperCase : public Processor {
  public:
   ToUpperCase(Engine *engine);
@@ -83,23 +84,23 @@ void RegisterRimeComponents() {
   Registry.instance().Register("upper", new Component<ToUpperCase>);
   // 註冊各種組件到Registry...
 }
-}}}
+```
 
 用法：
-{{{
+```
 void UsingAProcessor() {
   // Class<>模板提供了簡便的方法，按名稱取得組件
   // Class<T>::Require() 從Registry中取得T::Component的指針
   // 而Component<T>繼承自T::Component，並實現了其中的純虛函數Create()
   Processor::Component* component = Processor::Require("upper");
   // 利用組件生成所需的對象
-  KeyEvent ke;    // 輸入
+  KeyEvent key;   // 輸入
   Engine engine;  // 上屏文字由此輸出
   Processor* processor = component->Create(&engine);
-  bool taken = processor->ProcessKeyEvent(ke);
+  bool taken = processor->ProcessKeyEvent(key);
   delete processor;
 }
-}}}
+```
 實際的代碼中，會將這個例子改造成Engine持有Processor對象，並轉發輸入按鍵給Processor。
 
 ## 框架級組件和基礎組件
@@ -132,7 +133,7 @@ Context中的Composition，匯總了分段信息、使用者在各代碼段對�
 
 ### 基礎組件
 
-目前需求明確的基礎組件包括：
+基礎組件：
 
   * Dictionary, 詞典，由編碼序列檢索候選結果
   * UserDictionary, 動態的用戶詞典
