@@ -133,6 +133,8 @@ Context中的Composition，匯總了分段信息、使用者在各代碼段對�
 
 ### 基礎組件
 
+TODO(lotem): 補完文檔
+
 基礎組件：
 
   * Dictionary, 詞典，由編碼序列檢索候選結果
