@@ -24,7 +24,7 @@ Rime的Frontend/Backend模型，依照ibus、IMK等輸入法框架來設計：Fr
 名字也叫「中州韻輸入法引擎／RIME」嘛。
 
 這部份定義的代碼是 [rime/librime](https://github.com/rime/librime)，under C++ namespace `rime`。
-拋開實際的輸入法框架，俺先寫個控制檯程序 `RimeConsole` 來模擬輸入，觀察Engine的輸出，以驗證其功能是否符合設計。
+拋開實際的輸入法框架，俺先寫個控制臺程序 `RimeConsole` 來模擬輸入，觀察Engine的輸出，以驗證其功能是否符合設計。
 
 ## 引擎
 
