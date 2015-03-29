@@ -27,7 +27,7 @@ See [[this guide|RimeWithIBus]] for instructions on building and installing ibus
 
 ## How to Rime with the Code under Mac OS
 
-See [[this guilde|RimeWithSquirrel]] for instructions on building Squirrel.
+See [[this guide|RimeWithSquirrel]] for instructions on building Squirrel.
 
 ## How to Rime with the Code under Windows
 
