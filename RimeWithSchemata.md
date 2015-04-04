@@ -71,7 +71,7 @@ Rime 輸入方案亦會用到「正則表達式」實現一些高級功能。
 
 輸入方案設計者需要掌握這份文檔所描述的 Perl 正則表達式語法：
 
-[http://www.boost.org/doc/libs/1_49_0/libs/regex/doc/html/boost_regex/syntax/perl_syntax.html]
+http://www.boost.org/doc/libs/1_49_0/libs/regex/doc/html/boost_regex/syntax/perl_syntax.html
 
 ## Rime 中的數據文件分佈及作用
 
