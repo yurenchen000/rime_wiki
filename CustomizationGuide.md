@@ -510,7 +510,7 @@ https://gist.github.com/2320943
 【明月拼音·简化字／臺灣正體／語句流】也適用，
 只須將模板保存到 `luna_pinyin_simp.custom.yaml` 、 `luna_pinyin_tw.custom.yaml` 或 `luna_pinyin_fluency.custom.yaml` 。
 
-对比模糊音定製模板與[【朙月拼音】方案原件](https://github.com/lotem/brise/blob/master/preset/luna_pinyin.schema.yaml)，
+对比模糊音定製模板與[【朙月拼音】方案原件](https://github.com/rime/brise/blob/master/preset/luna_pinyin.schema.yaml)，
 可見模板的做法是，在 `speller/algebra` 原有的規則中插入了一些定義模糊音的代碼行。
 
 類似方案如雙拼、粵拼等可參考模板演示的方法改寫 `speller/algebra` 。
