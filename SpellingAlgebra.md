@@ -188,7 +188,7 @@ Rime輸入法獨門絕活之「拼寫運算」，是按規則改寫編碼的形�
 ## 工具
 除Rime輸入法主程序外，拼寫運算還用於：
    * 輸入方案部署工具：將投影所得的拼寫法製成Prism文件，供Rime輸入法於工作時快速訪問
-   * [拼寫運算調試器](http://rime.github.io/2013/08/28/spelling-algebra-debugger/)：創作輸入方案時，用此工具調試算式、驗證運算結果
+   * [拼寫運算調試器](http://rime.github.io/blog/2013/08/28/spelling-algebra-debugger/)：創作輸入方案時，用此工具調試算式、驗證運算結果
 
 ## 討論
 拼寫運算技術及應用技巧，你有好的話題，請寄：<rime-devel@googlegroups.com>
