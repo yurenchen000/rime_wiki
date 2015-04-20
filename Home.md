@@ -30,7 +30,7 @@ Rime 輸入方案貴在原創，把輸入法變成理想的模樣！
 
 ### 純粹地喜歡？
 
-不要錯過《[[說明書|UserGuide]]》、《[[定製指南|CustomizationGuide]]》等介紹使用技巧的文檔；
+不要錯過[[《說明書》|UserGuide]]、[[《定製指南》|CustomizationGuide]]等介紹使用技巧的文檔；
 
 歡迎常來 [Rime 貼吧](http://tieba.baidu.com/f?kw=rime) 參與討論；
 
