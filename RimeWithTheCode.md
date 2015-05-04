@@ -4,31 +4,33 @@
 
 ## Get the Code
 
-Fork Rime on [GitHub](http://github.com/rime):
+Fork Rime on [GitHub](https://github.com/rime):
 
   * La rime - the core library
-    <http://github.com/rime/librime>
+    <https://github.com/rime/librime>
 
   * La brise - Rime schema repository
-    <http://github.com/rime/brise>
+    <https://github.com/rime/brise>
 
   * ibus-rime - Linux client powered by IBus
-    <http://github.com/rime/ibus-rime>
+    <https://github.com/rime/ibus-rime>
 
   * Weasel - Windows client
-    <http://github.com/rime/weasel>
+    <https://github.com/rime/weasel>
 
   * Squirrel - Mac OS client
-    <http://github.com/rime/squirrel>
+    <https://github.com/rime/squirrel>
 
-## How to Rime with the Code under Linux
+## How to Rime with the OS
 
-See [[this guide|RimeWithIBus]] for instructions on building and installing ibus-rime.
+[[Instructions|RimeWithIBus]] on building and installing ibus-rime.
 
-## How to Rime with the Code under Mac OS
+[[Instructions|RimeWithSquirrel]] on building Squirrel on Mac OS X.
 
-See [[this guide|RimeWithSquirrel]] for instructions on building Squirrel.
+[[Instructions|RimeWithWeasel]] on building Weasel on Windows.
 
-## How to Rime with the Code under Windows
+## Report Issues
 
-[[Instructions|RimeWithWeasel]] on building Weasel in Visual Studio.
+Prefer to report issues to a specific repo. Pull requests are welcome.
+
+If you can't decide where to file an issue, for example if the issue doesn't belong to a specific project, or if the issue is about [the project home page](http://rime.github.io), documentation or issue tracking, please report to [Rime::Home](https://github.com/rime/home/issues).

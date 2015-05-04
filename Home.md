@@ -12,9 +12,9 @@ Rime Input Method Engine - riming with your keystrokes.
 
 ### 也來試試
 
-最新一代 Rime 輸入法搶鲜 [[下載|Downloads]]，立即擊響中文之韻！
+最新一代 Rime 輸入法搶鲜 [下載](http://rime.github.io/download)，立即擊響中文之韻！
 
-[[Download|Downloads]] the latest release, and happy riming with your keystrokes now!
+[Download](http://rime.github.io/download) the latest release, and happy riming with your keystrokes now!
 
 ### 也來設計
 
@@ -32,6 +32,6 @@ Rime 輸入方案貴在原創，把輸入法變成理想的模樣！
 
 不要錯過[[《說明書》|UserGuide]]、[[《定製指南》|CustomizationGuide]]等介紹使用技巧的文檔；
 
-歡迎常來 [Rime 貼吧](http://tieba.baidu.com/f?kw=rime) 參與討論；
+歡迎常來 [Rime 主站](http://rime.github.io/discuss) 參與討論；
 
-您可以通過 [捐贈](http://rime.github.io/donate/)，支持開發者爲 Rime 投入更大的努力。
+您可以通過 [捐贈](http://rime.github.io/donate)，支持開發者爲 Rime 投入更大的努力。

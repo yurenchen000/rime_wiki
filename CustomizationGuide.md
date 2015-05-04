@@ -571,7 +571,7 @@ http://tieba.baidu.com/p/1909252328
       recognizer/patterns/reverse_lookup:
       'punctuator/half_shape/`':
         - '佛振 <chen.sst@gmail.com>'
-        - 'http://code.google.com/p/rimeime/'
+        - 'http://rime.github.io'
         - 上天赋予你高的智商，教你用到有用的地方。
 
 上例 `recognizer/patterns/reverse_lookup:` 作用是關閉 ` 鍵的反查功能。若選用其他符號則不需要這行。又一例：
