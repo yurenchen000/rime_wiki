@@ -8,7 +8,7 @@
 
 ## Debian
 
-Rime 已收錄於 [Debian unstable (Sid)](http://wiki.debian.org/DebianUnstable)
+Rime 已收錄於 [Debian stable (Jessie)](https://wiki.debian.org/DebianStable)
 
     sudo apt-get install ibus-rime
 
