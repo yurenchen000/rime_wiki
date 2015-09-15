@@ -26,7 +26,7 @@ Rime 已收錄於 [Ubuntu 12.10 (Quantal Quetzal)](http://releases.ubuntu.com/12
 安裝更多輸入方案：
 
     # 朙月拼音（預裝）
-    sudo make install librime-data-luna-pinyin
+    sudo apt-get install librime-data-luna-pinyin
     # 雙拼
     sudo apt-get install librime-data-double-pinyin
     # 宮保拼音
