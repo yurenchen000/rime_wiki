@@ -343,7 +343,7 @@ Rime 中的過濾器組件 simplifier，完成對候選詞的繁簡轉換。
 效果自己看！
 
 也可以參照這張比較直觀的圖：
-![](http://imgur.com/a/CYPP9)
+![](http://i.imgur.com/hSty6cB.png)
 
 另，此處有現成的配色方案工具供用家調配：
 
