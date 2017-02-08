@@ -64,6 +64,10 @@ for Ubuntu 12.04 and higher
 
 Ubuntu 12.04 以下版本，參考下文的安裝手記。
 
+## Fedora 22+
+
+sudo dnf install ibus-rime
+
 ## Fedora 18/19
 
 sudo yum install ibus-rime
