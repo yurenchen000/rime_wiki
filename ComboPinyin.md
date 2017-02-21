@@ -1,5 +1,9 @@
 # 宮保拼音
 
+Rime 輸入方案：[`combo_pinyin`](https://github.com/rime/rime-combo-pinyin/blob/master/combo_pinyin.schema.yaml)
+
+[東風破](https://github.com/rime/brise) 口令： `bash rime-install combo-pinyin`
+
 ## 簡介
 
 【宮保拼音】，英文名 `Combo Pinyin`，是一種利用標準美式鍵盤 **並擊** 輸入漢字的方法。
