@@ -4,6 +4,8 @@ Rime 輸入方案：[`combo_pinyin`](https://github.com/rime/rime-combo-pinyin/b
 
 [東風破](https://github.com/rime/brise) 口令： `bash rime-install combo-pinyin`
 
+另見：[[宮保拼音·鍵盤控式|ComboPinyinKBCon]]
+
 ## 簡介
 
 【宮保拼音】，英文名 `Combo Pinyin`，是一種利用標準美式鍵盤 **並擊** 輸入漢字的方法。
@@ -122,6 +124,8 @@ Rime 輸入方案：[`combo_pinyin`](https://github.com/rime/rime-combo-pinyin/b
   * 又將 `1QAZ` 記爲「第1列」，`2WSX` 記爲「第2列」，依此類推。
 
 鍵盤中央標爲粗體的 `[g]` 以及 `[i]` 對應鍵盤上的基準按鍵 `F, J`。食指對準他們放好，其他鍵位也就完全明瞭。
+
+除本文介紹的鍵位佈局外，還有一套鍵位更優化、但對裝備要求較高的 [[宮保拼音·鍵盤控式|ComboPinyinKBCon]]。
 
 ### 聲母
 
