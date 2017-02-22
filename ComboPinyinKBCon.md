@@ -73,20 +73,16 @@ Rime 輸入方案：[`combo_pinyin_kbcon`](https://github.com/rime/rime-combo-pi
 
 仍由同一個輸入方案 `combo_pinyin_kbcon` 實現，無須切換輸入方案。
 
-        C'  Ln  Dt  T'      u   I   O
+       (C') Ln  Dt (T')     u   I   O
     H'  S   Cr  Z*  Gk      i*  N   E
-        Z'  Fm  Bp  P'  er  yu  U   E'
+       (Z') Fm  Bp (P') er  yu  U   E'
                         A*
 
     標「*」的按鍵爲拇指、食指的基準鍵位
+    加 () 的冗餘按鍵，是爲方便用家從「大衆式」過渡到本式而增設
 
 組合鍵增補
 ---
-
-「鍵盤控式」組合聲母（同上）
-
-    BH = p, BF = m, DH = t, DL = n, GH = k,
-    ZH = zh, CH = ch, SH = sh, ZC = r
 
 PC 鍵盤組合聲母及活用
 
@@ -97,14 +93,7 @@ PC 鍵盤組合聲母及活用
 
     P' = p, T' = t, FZ' = zh, LC' = ch, CS = sh
 
-組合韻母及活用（同上、亦同「大衆式」）
-
-    AI = ai, EI (OI) = ei, AU = ao, U (E'U) = ou,
-    uI = uei, uAI = uai, iU (yuU) = iou, iAU (yuAU) = iao,
-    N = en, NE = eng, AN = an, ANE = ang,
-    iN = in, uN = uen, yuN = yun,
-    iNE = ing, uNE (uIO) = ong, yuNE (yuUE') = iong,
-    uANE (uAIO) = uang
+組合韻母及活用（同上文、亦同「大衆式」）
 
 創作者自我測評
 ---
