@@ -48,6 +48,8 @@ Rime 輸入方案：[`combo_pinyin_kbcon`](https://github.com/rime/rime-combo-pi
     iNE = ing, uNE (uIO) = ong, yuNE (yuUE') = iong,
     uANE (uAIO) = uang
 
+![宮保拼音·鍵盤控式](https://github.com/rime/home/raw/master/images/combo-pinyin-kbcon-amj40.jpg)
+
 適用鍵盤型號及固件
 ---
 
