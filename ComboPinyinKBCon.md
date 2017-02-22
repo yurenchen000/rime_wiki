@@ -59,7 +59,7 @@ Rime 輸入方案：[`combo_pinyin_kbcon`](https://github.com/rime/rime-combo-pi
   - AMJ40:   http://github.com/lotem/AMJ40/tree/kbcon
   - ErgoDox: http://github.com/lotem/ergodox-firmware/tree/kbcon
 
-預設鍵位左手拇指爲回車鍵，通過佈局切換鍵開啓「宮保拼音」佈局後，左手拇指位變爲「`;`」鍵，對應宮保拼音碼 `H`。
+預設鍵位左手拇指位映射爲其他功能鍵，通過佈局切換鍵開啓「宮保拼音」佈局後，左手拇指位變爲「`;`」鍵，對應宮保拼音碼 `H`。
 
 本式宮保拼音亦可用於標準 PC 鍵盤，對其兼容的佈局和指法詳見下文。
 
