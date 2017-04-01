@@ -69,9 +69,9 @@ Rime 輸入方案：[`combo_pinyin_kbcon`](https://github.com/rime/rime-combo-pi
 ---
 
 該佈局是對「鍵盤控式」宮保拼音佈局的擴展，使其適用標準 PC 鍵盤。
-主要區別是不使用左手拇指位 `H` 鍵，而改用主鍵盤區中排第 1 列字母鍵，由左手小指操作。
+主要區別是不使用左手拇指位 `H` 鍵，而改用主鍵盤區中排第 1 列的 `H'` 鍵，由左手小指操作。
 
-仍由同一個輸入方案 `combo_pinyin_kbcon` 實現，無須切換輸入方案。
+由同一個輸入方案 `combo_pinyin_kbcon` 實現，無須切換輸入方案。
 
        (C') Ln  Dt (T')     u   I   O
     H'  S   Cr  Z*  Gk      i*  N   E
