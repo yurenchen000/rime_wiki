@@ -12,6 +12,8 @@
 
   * [鼠鬚管試玩心得](http://bbs.weiphone.com/read-htm-tid-5108521.html)／lionhoho
   * [致第一次安裝 RIME 的你](http://tieba.baidu.com/p/3288634121)／半月湾C
+  * [「鼠须管」配置方案分享](https://www.v2ex.com/t/303479)／scomper
+  * [鼠须管输入法 傻瓜版配置 - 基于 rime_pro 增强包](https://segmentfault.com/a/1190000005754706)／changsj
 
 ## 使用方案選單
 
