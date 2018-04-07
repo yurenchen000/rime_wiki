@@ -9,8 +9,8 @@ Fork Rime on [GitHub](https://github.com/rime):
   * La rime - the core library
     <https://github.com/rime/librime>
 
-  * La brise - Rime schema repository
-    <https://github.com/rime/brise>
+  * /plum/ - Rime configuration manager and input schema repository
+    <https://github.com/rime/plum>
 
   * ibus-rime - Linux client powered by IBus
     <https://github.com/rime/ibus-rime>
@@ -18,14 +18,14 @@ Fork Rime on [GitHub](https://github.com/rime):
   * Weasel - Windows client
     <https://github.com/rime/weasel>
 
-  * Squirrel - Mac OS client
+  * Squirrel - macOS client
     <https://github.com/rime/squirrel>
 
 ## How to Rime with the OS
 
 [[Instructions|RimeWithIBus]] on building and installing ibus-rime.
 
-[[Instructions|RimeWithSquirrel]] on building Squirrel on Mac OS X.
+[[Instructions|RimeWithSquirrel]] on building Squirrel on macOS.
 
 [[Instructions|RimeWithWeasel]] on building Weasel on Windows.
 

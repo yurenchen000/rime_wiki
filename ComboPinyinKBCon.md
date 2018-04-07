@@ -3,7 +3,7 @@
 
 Rime 輸入方案：[`combo_pinyin_kbcon`](https://github.com/rime/rime-combo-pinyin/blob/master/combo_pinyin_kbcon.schema.yaml)
 
-[東風破](https://github.com/rime/brise) 口令： `bash rime-install combo-pinyin`
+[東風破](https://github.com/rime/plum) 安裝口令： `bash rime-install combo-pinyin`
 
 簡介
 ---

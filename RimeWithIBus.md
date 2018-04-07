@@ -16,14 +16,13 @@ Rime 已收錄於 [Debian stable (Jessie)](https://wiki.debian.org/DebianStable)
 
     emerge ibus-rime  # or fcitx-rime
 
-
 ## Ubuntu
 
 Rime 已收錄於 [Ubuntu 12.10 (Quantal Quetzal)](http://releases.ubuntu.com/12.10/)
 
     sudo apt-get install ibus-rime
 
-安裝更多輸入方案：
+安裝更多輸入方案：（推薦使用 [/plum/](https://github.com/rime/plum) 安裝最新版本）
 
     # 朙月拼音（預裝）
     sudo apt-get install librime-data-luna-pinyin
@@ -109,11 +108,9 @@ Note: If your compiler doesn't fully support C++11, please checkout `oldschool` 
 
 ## Build and install ibus-rime
 
-download source packages: `librime, brise, ibus-rime`;
+clone project and submodules:
 
-    tar xzf librime-*.tar.gz
-    tar xzf brise-*.tar.gz
-    tar xzf ibus-rime-*.tar.gz
+    git clone --recursive https://github.com/rime/ibus-rime.git
     cd ibus-rime
     # do this as normal user
     ./install.sh
