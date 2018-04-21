@@ -396,10 +396,10 @@ flow-style map: 僅在節點樹的最內層使用。不嵌套使用。元素較�
 
 ## 錯誤處理
 
-TODO(rime/docs): 撰寫關於調試的專門 wiki 文章
-
 部署後出現錯誤，請查看 `INFO` 日誌（[參考][debug]），
 找到行首字符爲 `E` 的記錄，根據錯誤信息以及上下文排查出錯的配置文件。
+
+未出現錯誤信息，配置亦未達到預期效果，請對照 `<用戶文件夾>/build/` 文件夾內的編譯結果文件，檢查配置源文件與補靪。
 
   [debug]: https://github.com/rime/home/wiki/RimeWithSchemata#%E9%97%9C%E6%96%BC%E8%AA%BF%E8%A9%A6
 
