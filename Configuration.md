@@ -375,6 +375,8 @@ menu:
 
 *韻書* 文件中的 YAML 配置部份目前也不支持配置編譯指令。
 
+TODO(rime/docs): 詳解 YAML 節點樹及編譯指令的解析、執行順序
+
 ## 配置組件調用方式
 
 TODO(rime/engine): 完成本各節
