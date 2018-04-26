@@ -284,6 +284,10 @@ old_map:
   zerg_hatchary: {x -1024, y: 0}
 ```
 
+案例解析：
+
+- https://github.com/rime/librime/pull/192#issuecomment-371202389
+
 ## 配置編譯器插件
 
 自動添加一些隱含的編譯指令，用來實現對原有補靪機制以及導入成套組件配置等語法的兼容。
