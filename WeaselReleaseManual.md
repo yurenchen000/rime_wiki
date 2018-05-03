@@ -39,7 +39,7 @@
 
     git commit --all --message "chore(release): 0.11.0 :tada:"
     ```
-6.  以上提交在 `master` 完成。如果在另一個分支發佈，如 `legacy-userdb-migration`，則將以上修改合併到分支。
+6.  以上提交在 `master` 完成。如果在另一個分支發佈，如 `legacy`，則將以上修改合併到分支。
 7.  push 所有修改到 GitHub。檢驗 CI build：下載安裝程序，測試全新安裝以及從上一個推送版本升級。
 8.  確認該版本可發佈後，在 `master` 或要做發佈的分支上打標籤。（可推遲到發佈完成）推送標籤到 GitHub。
     ``` sh
@@ -55,5 +55,65 @@
     update/write-release-notes.sh
     ```
     留存生成的 `release-notes.html` 文件備用。
+11. 使用 [Hexo](https://hexo.io/) 在官方網站 <rime.im> 發佈更新。
 
-（未完待續）
+    ``` sh
+    git clone https://github.com/rime/home.git rime-home
+    cd rime-home/blog
+    npm install
+
+    npm install --global hexo-cli
+
+    # TODO(keyholder): edit files
+    ```
+
+    需要修改的內容包括：
+
+    - [首葉](http://rime.im/) 的下載按鈕：[源代碼](https://github.com/rime/home/tree/master/blog/source/_data/downloads.yaml)
+    - [下載葉](http://rime.im/download/) 的版本號及下載鏈接：[源代碼](https://github.com/rime/home/tree/master/blog/source/source/download/index.md)
+    - [更新日誌](http://rime.im/release/weasel/)，
+      更新 [源代碼](https://github.com/rime/home/tree/master/blog/source/source/release/weasel/index.md) 文件頭的 `date` 字段，
+      並用 `weasel/CHANGELOG.md` 的內容替換 Markdown 正文部份（YAML 結束標記 `---` 及隨後空行以下）
+    - [推送更新頻道](http://rime.im/release/weasel/appcast.xml)，
+      將 [源代碼](https://github.com/rime/home/tree/master/blog/source/source/release/weasel/appcast.xml) 替換爲第 5 步修改過的 `weasel/update/appcast.xml`
+    - [推送更新提示](http://rime.im/release/weasel/release-notes.html)，
+      將 [源代碼](https://github.com/rime/home/tree/master/blog/source/source/release/weasel/release-notes.html) 替換爲第 10 步生成的 `release-notes.html`
+
+12. 修改完成後，在本地調試網站。
+
+    ``` sh
+    # check your changes with local HTTP server
+    hexo server
+    ```
+
+    方法爲：將以上修改過的網葉地址中的域名部份替換爲 Hexo 提示的本地服務器地址，在瀏覽器中預覽各個網葉，檢查文字內容和鏈接地址。
+
+13. 確認內容無誤，用 Hexo 發佈網站。
+
+    ``` sh
+    # first time releaser, setup without deployment
+    hexo deploy --setup
+
+    # publish website at rime.github.io
+    hexo deploy --generate
+    ```
+
+    發佈完成後，可以在 https://github.com/rime/rime.github.io/commits/master 複查提交到 GitHub Pages 的修訂。
+
+14. 如果本次發佈不是針對小狼毫 0.9 的升級版本（見第 6 步），發佈至此完成。
+    否則需要在驗證新版本工作正常後，將其推送到位於 <rimeime.github.io> 的舊更新頻道。
+
+    首先需要取得 [rimeime.github.io](https://github.com/rimeime/rimeime.github.io) 的寫權限。
+
+    ``` sh
+    git clone https://github.com/rimeime/rimeime.github.io
+    cd rimeime.github.io
+    ```
+
+15. 編輯 `weasel-update/appcast.xml` 以及 `weasel-update/pioneer/appcast.xml`：
+    從第 5 步的 `weasel/update/appcast.xml` 複製 `<item>` 標籤的內容，視情況修改 `channel > title` 文字中的升級終點版本號。
+
+    當前版本同時在新、舊兩個更新頻道發佈，因此不必修改 <rimeime.github.io> 的更新日誌。
+    因爲根據 `appcast.xml` 中 `<sparkle:releaseNotesLink>` 的定義，推送更新提示一律從新官網 <rime.github.io> 加載。
+
+16. 最後提交修改，發出 pull-request。修改併入 `master` 即開始推送更新。
