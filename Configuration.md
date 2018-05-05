@@ -380,7 +380,7 @@ TODO(rime/docs): 詳解 YAML 節點樹及編譯指令的解析、執行順序
 
 ## 配置組件調用方式
 
-TODO(rime/engine): 完成本各節
+TODO(rime/engine): 完成本節
 
 ## 代碼風格
 
