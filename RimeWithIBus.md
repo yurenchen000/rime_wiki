@@ -18,7 +18,7 @@ Rime 已收錄於 [Debian stable (Jessie)](https://wiki.debian.org/DebianStable)
 
 ## Ubuntu
 
-Rime 已收錄於 Ubuntu [14.04 (Trusty Tahr)](https://packages.ubuntu.com/trusty/ibus-rime)，[16.04 (Xenial Xerus)](https://packages.ubuntu.com/xenial/ibus-rime)，和 [18.04 (Bionic Beaver)](https://packages.ubuntu.com/bionic/ibus-rime)。
+Rime 已收錄於 [Ubuntu 12.10 (Quantal Quetzal)](http://old-releases.ubuntu.com/releases/12.10/) 及以上版本
 
     sudo apt-get install ibus-rime
 
