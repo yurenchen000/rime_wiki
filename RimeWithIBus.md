@@ -8,7 +8,7 @@
 
 ## Debian
 
-Rime 已收錄於 [Debian stable (Jessie)](https://wiki.debian.org/DebianStable)
+Rime 已收錄於 [Debian Jessie](https://wiki.debian.org/DebianJessie) 及以上版本
 
     sudo apt-get install ibus-rime
 
