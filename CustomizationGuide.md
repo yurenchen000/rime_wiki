@@ -535,6 +535,9 @@ https://gist.github.com/2944319
 
 ### 在Mac系統上輸入emoji表情
 
+以下配置方法已過時，新的emoji用法見 https://github.com/rime/rime-emoji
+
+<del>
 參考 https://gist.github.com/2309739 把 `emoji` 加入輸入方案選單；
 
 切換到 `emoji` 輸入方案，即可通過拼音代碼輸入表情符號。[查看符號表](https://github.com/rime/home/raw/master/images/emoji-chart.png)
@@ -544,6 +547,7 @@ https://gist.github.com/2944319
 若要直接在【朙月拼音】裏輸入表情符號，請按此文設定：
 
 http://gist.github.com/3705586
+</del>
 
 ### 五筆簡入繁出
 
