@@ -191,4 +191,4 @@ Rime輸入法獨門絕活之「拼寫運算」，是按規則改寫編碼的形�
    * [拼寫運算調試器](http://rime.github.io/blog/2013/08/28/spelling-algebra-debugger/)：創作輸入方案時，用此工具調試算式、驗證運算結果
 
 ## 討論
-拼寫運算技術及應用技巧，你有好的話題，請在本頁或 [Rime 官網討論頁](http://rime.im/discuss) 留言。
+拼寫運算技術及應用技巧，你有好的話題，請在本頁或 [Rime 官網討論頁](https://rime.im/discuss) 留言。
