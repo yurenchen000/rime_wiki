@@ -30,7 +30,7 @@
     ```
 4.  提交對變更記錄的修改
     ``` sh
-    git commit --all --message "doc(CHANGELOG.md): release 0.11.0"
+    git commit --all --message "docs(CHANGELOG.md): release 0.11.0"
     ```
 5.  用腳本更新輸入法程序的版本號，並提交修改過的文件
     ``` sh
