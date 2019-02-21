@@ -306,7 +306,7 @@ Rime 中的過濾器組件 simplifier，完成對候選詞的繁簡轉換。
  * Alt——Windows上 Alt+字母 會被系統優先識別爲程序菜單項的快捷鍵，當然 Alt+Tab 也不可用
  * 嗯，Linux 發行版還支持 Super, Meta 等組合鍵，不過最好選每個平臺都能用的啦
 
-按鍵的名稱，大小寫字母和數字都用他們自己表示，其他的按鍵名稱 [參考這裏](https://github.com/rime/librime/blob/develop/thirdparty/include/X11/keysymdef.h) [这个更直观的文档](https://github.com/LEOYoon-Tsaw/Rime_collections/blob/master/Rime_description.md) 的定義，去除代碼前綴 `XK_` 即是。
+按鍵的名稱，大小寫字母和數字都用他們自己表示，其他的按鍵名稱 [參考這裏](https://github.com/rime/librime/blob/master/thirdparty/include/X11/keysymdef.h) [这个更直观的文档](https://github.com/LEOYoon-Tsaw/Rime_collections/blob/master/Rime_description.md) 的定義，去除代碼前綴 `XK_` 即是。
 
 
 ### 一例、定製【小狼毫】字體字號
