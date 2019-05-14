@@ -149,8 +149,7 @@ Rime 中，默認每頁至多顯示 5 個候選項，而允許的範圍是 1〜9
     # luna_pinyin.custom.yaml
     
     patch:
-      "punctuator":
-        "import_preset": alternative
+      'punctuator/import_preset': alternative
 
 就換上了自己習慣的一套標點！
 
