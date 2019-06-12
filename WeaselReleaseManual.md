@@ -3,7 +3,8 @@
 1.  在 [Trello](https://trello.com/b/iUJWFnjb/rime-development) 或筆記本上闢一葉紙，記下主要更新內容，方便粘貼到更新日誌。
     例如 https://trello.com/c/WieadeZt
 2.  對比上次發佈（git tag），檢查 `weasel.yaml` 是否需要更新版本號。
-2.  代碼交齊後，用工具根據慣例格式生成變更記錄。
+    注：檢查配置更新的機制改動後，這一步不嚴格要求。但仍建議更新小狼毫配置同時升級該配置文件的版本。
+3.  代碼交齊後，用工具根據慣例格式生成變更記錄。（這一步合併到 `update/bump-version.sh` 腳本中）
     以 clog-cli 爲例，爲新版本 0.11.0 生成變更記錄，做法是
     ``` sh
     # cargo install clog-cli
@@ -28,11 +29,11 @@
 
     #### Features
     ```
-4.  提交對變更記錄的修改
+4.  提交對變更記錄的修改（可以與版本號的修改合併爲一條提交記錄）
     ``` sh
     git commit --all --message "docs(CHANGELOG.md): release 0.11.0"
     ```
-5.  用腳本更新輸入法程序的版本號，並提交修改過的文件
+5.  用腳本更新輸入法程序的版本號，並提交修改過的文件（腳本會在最後調用 `clog` 提取更新日誌）
     ``` sh
     update/bump-version.sh # print usage
     update/bump-version.sh 0.10.0 0.11.0
@@ -41,12 +42,13 @@
     ```
 6.  以上提交在 `master` 完成。如果在另一個分支發佈，如 `legacy`，則將以上修改合併到分支。
 7.  push 所有修改到 GitHub。檢驗 CI build：下載安裝程序，測試全新安裝以及從上一個推送版本升級。
-8.  確認該版本可發佈後，在 `master` 或要做發佈的分支上打標籤。（可推遲到發佈完成）推送標籤到 GitHub。
+8.  確認該版本可發佈後，在 `master` 或要做發佈的分支上打標籤。推送標籤到 GitHub 會在安裝包構建完成後自動觸發發佈到 bintray release 頻道的部署作業。
     ``` sh
     git tag --annotate 0.11.0 --message "chore(release): 0.11.0 :tada:"
     git push --tags
     ```
-9.  將（release tag 或最終 push 觸發的） CI build 生成的安裝包上傳到 bintray。
+9.  AppVeyor 已經創建好了版本，並上傳了文件，只等一鍵發佈。如果手動完成，這個過程爲：
+    將（release tag 觸發的） CI build 生成的安裝包上傳到 bintray。
     在 https://bintray.com/rime/weasel/release 新建版本 (New version)，命名爲版本號 `0.11.0`，描述：`小狼毫 0.11.0`。
     爲新建的版本上傳文件 `weasel-0.11.0.0-installer.exe`。
 10. 生成顯示在推送更新介面的變更記錄。只包含 `CHANGELOG.md` 的最新版本章節，格式爲樸素的 HTML 網頁。
@@ -79,6 +81,8 @@
     - [推送更新提示](https://rime.im/release/weasel/release-notes.html)，
       將 [源代碼](https://github.com/rime/home/blob/master/blog/source/release/weasel/release-notes.html) 替換爲第 10 步生成的 `release-notes.html`
 
+    測試頻道（用於手動檢查更新）自動化調試就緒前，將 `blog/source/release/weasel/` 的內容複製到 `blog/source/testing/weasel/`，唯獨需要保留 `blog/source/testing/weasel/appcast.xml` 文件頭部分關於「測試頻道」的幾行。
+
 12. 修改完成後，在本地調試網站。
 
     ``` sh
@@ -94,13 +98,20 @@
     # first time releaser, setup without deployment
     hexo deploy --setup
 
+    # work-around a hexo generator bug:
+    # source HTML files in generated folder may not get updated;
+    # delete them to force re-generating (copying) the latest version.
+    rm -f public/{release,testing}/weasel/release-notes.html
+
     # publish website at rime.github.io
     hexo deploy --generate
     ```
 
     發佈完成後，可以在 https://github.com/rime/rime.github.io/commits/master 複查提交到 GitHub Pages 的修訂。
 
-14. 如果本次發佈不是針對小狼毫 0.9 的升級版本（見第 6 步），發佈至此完成。
+14. 提交以上修改到 `rime/home` 代碼庫。
+
+15. 如果本次發佈不是針對小狼毫 0.9 的升級版本（見第 6 步），發佈至此完成。
     否則需要在驗證新版本工作正常後，將其推送到位於 <rimeime.github.io> 的舊更新頻道。
 
     首先需要取得 [rimeime.github.io](https://github.com/rimeime/rimeime.github.io) 的寫權限。
@@ -110,10 +121,10 @@
     cd rimeime.github.io
     ```
 
-15. 編輯 `weasel-update/appcast.xml` 以及 `weasel-update/pioneer/appcast.xml`：
+16. 編輯 `weasel-update/appcast.xml` 以及 `weasel-update/pioneer/appcast.xml`：
     從第 5 步的 `weasel/update/appcast.xml` 複製 `<item>` 標籤的內容，視情況修改 `channel > title` 文字中的升級終點版本號。
 
     當前版本同時在新、舊兩個更新頻道發佈，因此不必修改 <rimeime.github.io> 的更新日誌。
     因爲根據 `appcast.xml` 中 `<sparkle:releaseNotesLink>` 的定義，推送更新提示一律從新官網 <rime.github.io> 加載。
 
-16. 最後提交修改，發出 pull-request。修改併入 `master` 即開始推送更新。
+17. 最後提交修改，發出 pull-request。修改併入 `master` 即開始推送更新。
