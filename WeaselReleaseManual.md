@@ -99,9 +99,9 @@
     hexo deploy --setup
 
     # work-around a hexo generator bug:
-    # source HTML files in generated folder may not get updated;
+    # source XML/HTML files in generated folder may not get updated;
     # delete them to force re-generating (copying) the latest version.
-    rm -f public/{release,testing}/weasel/release-notes.html
+    rm -f public/{release,testing}/weasel/{appcast.xml,release-notes.html}
 
     # publish website at rime.github.io
     hexo deploy --generate
