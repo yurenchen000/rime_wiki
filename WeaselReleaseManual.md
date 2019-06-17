@@ -81,7 +81,7 @@
     - [推送更新提示](https://rime.im/release/weasel/release-notes.html)，
       將 [源代碼](https://github.com/rime/home/blob/master/blog/source/release/weasel/release-notes.html) 替換爲第 10 步生成的 `release-notes.html`
 
-    測試頻道（用於手動檢查更新）自動化調試就緒前，將 `blog/source/release/weasel/` 的內容複製到 `blog/source/testing/weasel/`，唯獨需要保留 `blog/source/testing/weasel/appcast.xml` 文件頭部分關於「測試頻道」的幾行。
+    測試頻道（用於手動檢查更新）自動化調試就緒前，將 `blog/source/release/weasel/` 的內容複製到 `blog/source/testing/weasel/`，唯獨需要用 `weasel/update/testing-appcast.xml` 更新 `blog/source/testing/weasel/appcast.xml`。
 
 12. 修改完成後，在本地調試網站。
 
