@@ -348,7 +348,9 @@ Rime 中的過濾器組件 simplifier，完成對候選詞的繁簡轉換。
 
 另，此處有現成的配色方案工具供用家調配：
 
-http://tieba.baidu.com/p/2491103778
+* <del>http://tieba.baidu.com/p/2491103778</del>
+
+* https://bennyyip.github.io/Rime-See-Me/
 
 ## DIY 處方集
 
