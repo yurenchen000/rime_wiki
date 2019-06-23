@@ -100,10 +100,9 @@
 
     # source XML/HTML files in generated folder may not get updated.
     hexo clean
-    hexo generate
 
     # publish website at rime.github.io
-    hexo deploy
+    hexo deploy --generate
     ```
 
     發佈完成後，可以在 https://github.com/rime/rime.github.io/commits/master 複查提交到 GitHub Pages 的修訂。
