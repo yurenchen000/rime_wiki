@@ -98,13 +98,12 @@
     # first time releaser, setup without deployment
     hexo deploy --setup
 
-    # work-around a hexo generator bug:
-    # source XML/HTML files in generated folder may not get updated;
-    # delete them to force re-generating (copying) the latest version.
-    rm -f public/{release,testing}/weasel/{appcast.xml,release-notes.html}
+    # source XML/HTML files in generated folder may not get updated.
+    hexo clean
+    hexo generate
 
     # publish website at rime.github.io
-    hexo deploy --generate
+    hexo deploy
     ```
 
     發佈完成後，可以在 https://github.com/rime/rime.github.io/commits/master 複查提交到 GitHub Pages 的修訂。
