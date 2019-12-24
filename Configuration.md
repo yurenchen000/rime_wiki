@@ -349,7 +349,7 @@ menu:
 
 ```yaml
 <component>:
-  __import: <config>:/<component>
+  __include: <config>:/<component>
   # 以下爲輸入方案覆蓋定義的內容
 ```
 
