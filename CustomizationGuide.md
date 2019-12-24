@@ -350,9 +350,9 @@ Rime 中的過濾器組件 simplifier，完成對候選詞的繁簡轉換。
 
 * <del>http://tieba.baidu.com/p/2491103778</del>
 
-* https://bennyyip.github.io/Rime-See-Me/
+* 小狼毫：https://bennyyip.github.io/Rime-See-Me/
 
-* https://gjrobert.github.io/Rime-See-Me-squirrel/
+* 鼠鬚管：https://gjrobert.github.io/Rime-See-Me-squirrel/
 
 ## DIY 處方集
 
