@@ -352,6 +352,8 @@ Rime 中的過濾器組件 simplifier，完成對候選詞的繁簡轉換。
 
 * https://bennyyip.github.io/Rime-See-Me/
 
+* https://gjrobert.github.io/Rime-See-Me-squirrel/
+
 ## DIY 處方集
 
 已將一些定製 Rime 的常見問題、解法及定製檔鏈接收錄於此。
