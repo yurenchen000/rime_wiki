@@ -166,7 +166,7 @@ YAML 語法不允許 map 有重複的 key。
 如果要引用不同位置的多項補靪，可以爲 `__patch:` 指定一個列表，其中每項通過節點引用定義一組補靪：
 
 ```yaml
-patch_example_3:
+patch_example_4:
   __include: base_config
   __patch:
     - company_standard
