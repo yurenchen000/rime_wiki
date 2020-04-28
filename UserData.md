@@ -9,8 +9,8 @@ Rime 從「用戶文件夾」讀取用家自訂的配置。
 
 - **小狼毫：** 用戶文件夾的默認路徑爲 `%APPDATA%\Rime`。也可以通過「開始菜單＼小狼毫輸入法＼用戶文件夾」打開。
 - **鼠鬚管：** 用戶文件夾的路徑爲 `~/Library/Rime`。也可以通過「系統輸入法菜單／鼠鬚管／用戶設定…」打開。
-- **ibus-rime:** `~/.confg/ibus/rime`
-- **fcitx-rime:** `~/.confg/fcitx/rime`
+- **ibus-rime:** `~/.config/ibus/rime`
+- **fcitx-rime:** `~/.config/fcitx/rime`
 
 ## 內容
 
