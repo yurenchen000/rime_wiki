@@ -36,3 +36,17 @@ recipes=(
 bash rime-install "${recipes[@]}" || exit 1
 "/Library/Input Methods/Squirrel.app/Contents/MacOS/Squirrel" --reload
 ```
+
+## 使用`v`快速输入英文
+
+https://gist.github.com/jackielii/c0e9da7dd7cd5c5be13aa9b010dc98b0
+
+```
+patch:    
+  "recognizer/patterns/veng": "^v.*$"
+  "engine/segmentors/@before last": affix_segmentor@veng
+  veng:
+    tag: veng
+    prefix: "v"
+    tips: "英语输入"
+```
