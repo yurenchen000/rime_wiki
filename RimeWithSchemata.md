@@ -78,23 +78,23 @@ http://www.boost.org/doc/libs/1_49_0/libs/regex/doc/html/boost_regex/syntax/perl
 除程序文件以外，Rime 還包括多種數據文件。
 這些數據文件存在於以下位置：
 
-共享資料夾
+[共享資料夾](https://github.com/rime/home/wiki/SharedData)
   * 【中州韻】  `/usr/share/rime-data/`
   * 【小狼毫】  `"安裝目錄\data"`
   * 【鼠鬚管】  `"/Library/Input Methods/Squirrel.app/Contents/SharedSupport/"`
 
-用戶資料夾 
+[用戶資料夾](https://github.com/rime/home/wiki/UserData)
   * 【中州韻】  `~/.config/ibus/rime/` （0.9.1 以下版本爲 `~/.ibus/rime/`）
   * 【小狼毫】  `"%APPDATA%\Rime"`
   * 【鼠鬚管】  `~/Library/Rime/`
 
-共享資料夾包含預設輸入方案的源文件。
+[共享資料夾](https://github.com/rime/home/wiki/SharedData) 包含預設輸入方案的源文件。
 這些文件屬於 Rime 所發行軟件的一部份，在訪問權限控制較嚴格的系統上對用戶是只讀的，因此謝絕軟件版本更新以外的任何修改——
 一旦用戶修改這裏的文件，很可能影響後續的軟件升級或在升級時丟失數據。
 
-在「部署 Rime」操作時，將用到這裏的輸入方案源文件、並結合用戶定製的內容來編譯預設輸入方案。
+在「[部署](https://github.com/rime/home/wiki/CustomizationGuide#%E9%87%8D%E6%96%B0%E4%BD%88%E7%BD%B2%E7%9A%84%E6%93%8D%E4%BD%9C%E6%96%B9%E6%B3%95)」操作時，將用到這裏的輸入方案源文件、並結合用戶定製的內容來編譯預設輸入方案。
 
-用戶資料夾則包含爲用戶準備的內容，如：
+[用戶資料夾](https://github.com/rime/home/wiki/UserData) 則包含爲用戶準備的內容，如：
   * 〔全局設定〕 `default.yaml`
   * 〔發行版設定〕 `weasel.yaml`
   * 〔預設輸入方案副本〕 `<方案標識>.schema.yaml`
@@ -108,7 +108,7 @@ http://www.boost.org/doc/libs/1_49_0/libs/regex/doc/html/boost_regex/syntax/perl
   * 〔Rime 反查詞典〕 `<詞典名>.reverse.bin`
 
 記錄用戶寫作習慣的文件：
-  * ※〔用戶詞典〕 `<詞典名>.userdb.kct`
+  * ※〔用戶詞典〕 `<詞典名>.userdb/` 或 `<詞典名>.userdb.kct`
   * ※〔用戶詞典快照〕 `<詞典名>.userdb.txt`、`<詞典名>.userdb.kct.snapshot` 見於同步文件夾
 
 以及用戶自己設定的：
