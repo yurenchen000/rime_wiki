@@ -46,15 +46,17 @@ Rime 輸入方案，將 Rime 輸入法的設定整理成完善的、可分發的
 
 創建一個文件名的主體部份（「.」之前）與要定製的文件相同、次級擴展名（「.yaml」之前）爲 `.custom` 的定製文檔：
 
-    patch:
-      "一級設定項/二級設定項/三級設定項": 新的設定值
-      "另一個設定項": 新的設定值
-      "再一個設定項": 新的設定值
-      "含列表的設定項/@n": 列表第n個元素新的設定值，從0開始計數
-      "含列表的設定項/@last": 列表最後一個元素新的設定值
-      "含列表的設定項/@before 0": 在列表第一個元素之前插入新的設定值（不建議在補靪中使用）
-      "含列表的設定項/@after last": 在列表最後一個元素之後插入新的設定值（不建議在補靪中使用）
-      "含列表的設定項/@next": 在列表最後一個元素之後插入新的設定值（不建議在補靪中使用）
+```yaml
+patch:
+  "一級設定項/二級設定項/三級設定項": 新的設定值
+  "另一個設定項": 新的設定值
+  "再一個設定項": 新的設定值
+  "含列表的設定項/@n": 列表第n個元素新的設定值，從0開始計數
+  "含列表的設定項/@last": 列表最後一個元素新的設定值
+  "含列表的設定項/@before 0": 在列表第一個元素之前插入新的設定值（不建議在補靪中使用）
+  "含列表的設定項/@after last": 在列表最後一個元素之後插入新的設定值（不建議在補靪中使用）
+  "含列表的設定項/@next": 在列表最後一個元素之後插入新的設定值（不建議在補靪中使用）
+```
 
 就是這樣：`patch` 定義了一組「補靪」，以源文件中的設定爲基礎，寫入新的設定項、或以新的設定值取代現有設定項的值。
 
@@ -67,8 +69,10 @@ Rime 中，默認每頁至多顯示 5 個候選項，而允許的範圍是 1〜9
 
 設定每頁候選個數的默認值爲 9，在用戶目錄建立文檔 `default.custom.yaml` ：
 
-    patch:
-      "menu/page_size": 9
+```yaml
+patch:
+  "menu/page_size": 9
+```
 
 重新佈署即可生效。
 
@@ -85,11 +89,13 @@ Rime 中，默認每頁至多顯示 5 個候選項，而允許的範圍是 1〜9
 
 仍以【朙月拼音】爲例，輸入方案中有以下設定：
 
-    # luna_pinyin.schema.yaml
-    # ...
+```yaml
+# luna_pinyin.schema.yaml
+# ...
 
-    punctuator:
-      import_preset: default
+punctuator:
+  import_preset: default
+```
 
 解釋：
 
@@ -99,38 +105,44 @@ Rime 中，默認每頁至多顯示 5 個候選項，而允許的範圍是 1〜9
 
 查看 `default.yaml` ，確有如下符號表：
 
-    punctuator:
-      full_shape:
-        # ……其他……
-        "/" : [ ／, "/", ÷ ]
-        # ……其他……
-      half_shape:
-        # ……其他……
-        "/" : [ "/", ／, ÷ ]
-        # ……其他……
+```yaml
+punctuator:
+  full_shape:
+    # ……其他……
+    "/" : [ ／, "/", ÷ ]
+    # ……其他……
+    half_shape:
+    # ……其他……
+    "/" : [ "/", ／, ÷ ]
+    # ……其他……
+```
 
 可見按鍵 `/` 是被指定到 `"/", ／, ÷` 等一組符號了。
 並且全角和半角狀態下，符號有不同的定義。
 
 欲令 `/` 鍵直接輸出「、」，可如此定製 `luna_pinyin.custom.yaml`:
 
-    patch:
-      punctuator/full_shape:
-        "/" : "、"
-      punctuator/half_shape:
-        "/" : "、"
+```yaml
+patch:
+  punctuator/full_shape:
+    "/" : "、"
+  punctuator/half_shape:
+    "/" : "、"
+```
 
 以上在輸入方案設定中寫入兩組新值，合併後的輸入方案成爲：
 
-    # luna_pinyin.schema.yaml
-    # ...
-    
-    punctuator:
-      import_preset: default
-      full_shape:
-        "/" : "、"
-      half_shape:
-        "/" : "、"
+```yaml
+# luna_pinyin.schema.yaml
+# ...
+
+punctuator:
+  import_preset: default
+  full_shape:
+    "/" : "、"
+  half_shape:
+    "/" : "、"
+```
 
 含義是、在由 `default` 導入的符號表之上，覆寫對按鍵 `/` 的定義。
 
@@ -146,10 +158,12 @@ Rime 中，默認每頁至多顯示 5 個候選項，而允許的範圍是 1〜9
 
 再將輸入方案中的「導入 `default` 設定」通過打 patch 替換爲「導入 `alternative` 設定」
 
-    # luna_pinyin.custom.yaml
-    
-    patch:
-      'punctuator/import_preset': alternative
+```yaml
+# luna_pinyin.custom.yaml
+
+patch:
+  'punctuator/import_preset': alternative
+```
 
 就換上了自己習慣的一套標點！
 
@@ -166,22 +180,24 @@ Rime 預設的詞彙表使用傳統漢字。
 
 Rime 中的過濾器組件 simplifier，完成對候選詞的繁簡轉換。
 
-    # luna_pinyin.schema.yaml
-    # ...
-    
-    switches:
-      - name: ascii_mode
-        reset: 0
-        states: [ 中文, 西文 ]
-      - name: full_shape
-        states: [ 半角, 全角 ]
-      - name: simplification    # 轉換開關
-        states: [ 漢字, 汉字 ]
-    
-    engine:
-      filters:
-        - simplifier  # 必要組件一
-        - uniquifier  # 必要組件二
+```yaml
+# luna_pinyin.schema.yaml
+# ...
+
+switches:
+  - name: ascii_mode
+    reset: 0
+    states: [ 中文, 西文 ]
+  - name: full_shape
+    states: [ 半角, 全角 ]
+  - name: simplification    # 轉換開關
+    states: [ 漢字, 汉字 ]
+
+engine:
+  filters:
+    - simplifier  # 必要組件一
+    - uniquifier  # 必要組件二
+```
 
 以上是【朙月拼音】中有關繁簡轉換功能的設定。
 
@@ -200,37 +216,41 @@ Rime 中的過濾器組件 simplifier，完成對候選詞的繁簡轉換。
 如果日常應用以簡化字爲主`:-(`，則每每在〔方案選單〕中切換十分不便；
 於是佛振獻上默認輸出簡化字的設定檔：
 
-    # luna_pinyin.custom.yaml
-    
-    patch:
-      switches:                   # 注意縮進
-        - name: ascii_mode
-          reset: 0                # reset 0 的作用是當從其他輸入方案切換到本方案時，
-          states: [ 中文, 西文 ]  # 重設爲指定的狀態，而不保留在前一個方案中設定的狀態。
-        - name: full_shape        # 選擇輸入方案後通常需要立即輸入中文，故重設 ascii_mode = 0；
-          states: [ 半角, 全角 ]  # 而全／半角則可沿用之前方案中的用法。
-        - name: simplification
-          reset: 1                # 增加這一行：默認啓用「繁→簡」轉換。
-          states: [ 漢字, 汉字 ]
+```yaml
+# luna_pinyin.custom.yaml
+
+patch:
+  switches:                   # 注意縮進
+    - name: ascii_mode
+      reset: 0                # reset 0 的作用是當從其他輸入方案切換到本方案時，
+      states: [ 中文, 西文 ]  # 重設爲指定的狀態，而不保留在前一個方案中設定的狀態。
+    - name: full_shape        # 選擇輸入方案後通常需要立即輸入中文，故重設 ascii_mode = 0；
+      states: [ 半角, 全角 ]  # 而全／半角則可沿用之前方案中的用法。
+    - name: simplification
+      reset: 1                # 增加這一行：默認啓用「繁→簡」轉換。
+      states: [ 漢字, 汉字 ]
+```
 
 其實預設輸入方案中就提供了一套【朙月拼音】的簡化字版本，名爲【簡化字】，以應大家“填表”之需。
 看他的代碼如何卻與上篇定製檔寫得不同：
 
-    # luna_pinyin_simp.schema.yaml
-    # ...
-    
-    switches:
-      - name: ascii_mode
-        reset: 0
-        states: [ 中文, 西文 ]
-      - name: full_shape
-        states: [ 半角, 全角 ]
-      - name: zh_simp           # 注意這裏（※1）
-        reset: 1
-        states: [ 漢字, 汉字 ]
-    
-    simplifier:
-      option_name: zh_simp      # 和這裏（※2）
+```yaml
+# luna_pinyin_simp.schema.yaml
+# ...
+
+switches:
+  - name: ascii_mode
+    reset: 0
+    states: [ 中文, 西文 ]
+  - name: full_shape
+    states: [ 半角, 全角 ]
+  - name: zh_simp           # 注意這裏（※1）
+    reset: 1
+    states: [ 漢字, 汉字 ]
+
+simplifier:
+  option_name: zh_simp      # 和這裏（※2）
+```
 
 前文說，`simplifier` 這個組件會檢查名爲 `simplification` 的開關狀態；
 而這款【簡化字】方案卻用了一個不同名的開關 `zh_simp`，即 ※1 處所示；
@@ -258,25 +278,29 @@ Rime 中的過濾器組件 simplifier，完成對候選詞的繁簡轉換。
 
 我們以【朙月拼音】爲例：
 
-    # luna_pinyin.custom.yaml
-    
-    patch:
-      "switches/@0/reset": 1  #表示將 switcher 列表中的第一個元素（即 ascii_mode 開關）的初始值重設爲狀態1（即「英文」）。
+```yaml
+# luna_pinyin.custom.yaml
+
+patch:
+  "switches/@0/reset": 1  #表示將 switcher 列表中的第一個元素（即 ascii_mode 開關）的初始值重設爲狀態1（即「英文」）。
+```
 
 
 ### 一例、定製方案選單
 
 在【小狼毫】方案選單設定介面上勾勾選選，就可以如此定製輸入方案列表：
 
-    # default.custom.yaml
-    
-    patch:
-      schema_list:  # 對於列表類型，現在無有辦法指定如何添加、消除或單一修改某項，於是要在定製檔中將整個列表替換！
-        - schema: luna_pinyin
-        - schema: cangjie5
-        - schema: luna_pinyin_fluency
-        - schema: luna_pinyin_simp
-        - schema: my_coolest_ever_schema  # 這樣就啓用了未曾有過的高級輸入方案！其實這麼好的方案應該排在最前面哈。
+```yaml
+# default.custom.yaml
+
+patch:
+  schema_list:  # 對於列表類型，現在無有辦法指定如何添加、消除或單一修改某項，於是要在定製檔中將整個列表替換！
+    - schema: luna_pinyin
+    - schema: cangjie5
+    - schema: luna_pinyin_fluency
+    - schema: luna_pinyin_simp
+    - schema: my_coolest_ever_schema  # 這樣就啓用了未曾有過的高級輸入方案！其實這麼好的方案應該排在最前面哈。
+```
 
 無有設定介面時，又想啓用、禁用某個輸入方案，手寫這樣一份定製檔、重新佈署就好啦。
 
@@ -289,13 +313,15 @@ Rime 中的過濾器組件 simplifier，完成對候選詞的繁簡轉換。
 
 那麼……
 
-    # default.custom.yaml
-    
-    patch:
-      "switcher/hotkeys":  # 這個列表裏每項定義一個快捷鍵，使哪個都中
-        - "Control+s"      # 添加 Ctrl+s
-        - "Control+grave"  # 你看寫法並不是 Ctrl+` 而是與 IBus 一致的表示法
-        - F4
+```yaml
+# default.custom.yaml
+
+patch:
+  "switcher/hotkeys":  # 這個列表裏每項定義一個快捷鍵，使哪個都中
+    - "Control+s"      # 添加 Ctrl+s
+    - "Control+grave"  # 你看寫法並不是 Ctrl+` 而是與 IBus 一致的表示法
+    - F4
+```
 
 按鍵定義的格式爲「修飾符甲+修飾符乙+…+按鍵名稱」，加號爲分隔符，要寫出。
 
@@ -313,32 +339,36 @@ Rime 中的過濾器組件 simplifier，完成對候選詞的繁簡轉換。
 
 雖與輸入方案無關，也在此列出以作參考。
 
-    # weasel.custom.yaml
-    
-    patch:
-      "style/font_face": "明兰"  # 字體名稱，從記事本等處的系統字體對話框裏能看到
-      "style/font_point": 14     # 字號，只認數字的，不認「五號」、「小五」這樣的
+```yaml
+# weasel.custom.yaml
+
+patch:
+  "style/font_face": "明兰"  # 字體名稱，從記事本等處的系統字體對話框裏能看到
+  "style/font_point": 14     # 字號，只認數字的，不認「五號」、「小五」這樣的
+```
 
 
 ### 一例、定製【小狼毫】配色方案
 
 註：這款配色已經在新版本的小狼毫裏預設了，做練習時，你可以將文中 `starcraft` 換成自己命名的標識。
 
-    # weasel.custom.yaml
-    
-    patch:
-      "style/color_scheme": starcraft    # 這項用於選中下面定義的新方案
-      "preset_color_schemes/starcraft":  # 在配色方案列表裏加入標識爲 starcraft 的新方案
-        name: 星際我爭霸／StarCraft
-        author: Contralisk <contralisk@gmail.com>, original artwork by Blizzard Entertainment
-        text_color: 0xccaa88             # 編碼行文字顏色，24位色值，用十六進制書寫方便些，順序是藍綠紅0xBBGGRR
-        candidate_text_color: 0x30bb55   # 候選項文字顏色，當與文字顏色不同時指定
-        back_color: 0x000000             # 底色
-        border_color: 0x1010a0           # 邊框顏色，與底色相同則爲無邊框的效果
-        hilited_text_color: 0xfecb96     # 高亮文字，即與當前高亮候選對應的那部份輸入碼
-        hilited_back_color: 0x000000     # 設定高亮文字的底色，可起到凸顯高亮部份的作用
-        hilited_candidate_text_color: 0x60ffa8  # 高亮候選項的文字顏色，要醒目！
-        hilited_candidate_back_color: 0x000000  # 高亮候選項的底色，若與背景色不同就會顯出光棒
+```yaml
+# weasel.custom.yaml
+
+patch:
+  "style/color_scheme": starcraft    # 這項用於選中下面定義的新方案
+  "preset_color_schemes/starcraft":  # 在配色方案列表裏加入標識爲 starcraft 的新方案
+    name: 星際我爭霸／StarCraft
+    author: Contralisk <contralisk@gmail.com>, original artwork by Blizzard Entertainment
+    text_color: 0xccaa88             # 編碼行文字顏色，24位色值，用十六進制書寫方便些，順序是藍綠紅0xBBGGRR
+    candidate_text_color: 0x30bb55   # 候選項文字顏色，當與文字顏色不同時指定
+    back_color: 0x000000             # 底色
+    border_color: 0x1010a0           # 邊框顏色，與底色相同則爲無邊框的效果
+    hilited_text_color: 0xfecb96     # 高亮文字，即與當前高亮候選對應的那部份輸入碼
+    hilited_back_color: 0x000000     # 設定高亮文字的底色，可起到凸顯高亮部份的作用
+    hilited_candidate_text_color: 0x60ffa8  # 高亮候選項的文字顏色，要醒目！
+    hilited_candidate_back_color: 0x000000  # 高亮候選項的底色，若與背景色不同就會顯出光棒
+```
 
 效果自己看！
 
@@ -378,11 +408,13 @@ https://gist.github.com/2309739
 
 使用橫向候選欄、嵌入式編碼行：
 
-    # weasel.custom.yaml
-    patch:
-      style/horizontal: true      # 候選橫排
-      style/inline_preedit: true  # 內嵌編碼（僅支持TSF）
-      style/display_tray_icon: true  # 顯示托盤圖標
+```yaml
+# weasel.custom.yaml
+patch:
+  style/horizontal: true      # 候選橫排
+  style/inline_preedit: true  # 內嵌編碼（僅支持TSF）
+  style/display_tray_icon: true  # 顯示托盤圖標
+```
 
 #### 【鼠鬚管】外觀與鍵盤設定
 
@@ -404,11 +436,13 @@ https://gist.github.com/2290714
 
 例如，要在 `Xcode` 裏面默認關閉中文輸入，又要在 `Alfred` 裏面恢復開啓中文輸入，可如此設定：
 
-    # example squirrel.custom.yaml
-    patch:
-      app_options/com.apple.Xcode:
-        ascii_mode: true
-      app_options/com.alfredapp.Alfred: {}
+```yaml
+# example squirrel.custom.yaml
+patch:
+  app_options/com.apple.Xcode:
+    ascii_mode: true
+  app_options/com.alfredapp.Alfred: {}
+```
 
 註：一些版本的 `Xcode` 標識爲 `com.apple.dt.Xcode`，請注意查看 `Info.plist`。
 
@@ -416,10 +450,12 @@ https://gist.github.com/2290714
 
 例如，要在 `gVim` 裏面默認關閉中文輸入，可如此設定：
 
-    # example weasel.custom.yaml
-    patch:
-      app_options/gvim.exe:  # 程序名字全用小寫字母
-        ascii_mode: true
+```yaml
+# example weasel.custom.yaml
+patch:
+  app_options/gvim.exe:  # 程序名字全用小寫字母
+    ascii_mode: true
+```
 
 ### 輸入習慣
 
@@ -464,17 +500,21 @@ https://gist.github.com/2390510
 
 以【倉頡五代】爲例：
 
-    # cangjie5.custom.yaml
-    patch:
-      translator/enable_completion: false
+```yaml
+# cangjie5.custom.yaml
+patch:
+  translator/enable_completion: false
+```
 
 #### 關閉用戶詞典和字頻調整
 
 以【五笔86】爲例：
 
-    # wubi86.custom.yaml
-    patch:
-      translator/enable_user_dict: false
+```yaml
+# wubi86.custom.yaml
+patch:
+  translator/enable_user_dict: false
+```
 
 #### 關閉碼表輸入法連打
 
@@ -482,9 +522,11 @@ https://gist.github.com/2390510
 
 以【倉頡】爲例：
 
-    # cangjie5.custom.yaml
-    patch:
-      translator/enable_sentence: false
+```yaml
+# cangjie5.custom.yaml
+patch:
+  translator/enable_sentence: false
+```
 
 #### 關閉倉頡與拼音混打
 
@@ -492,9 +534,11 @@ https://gist.github.com/2390510
 
 如此設定，直接敲字母只認作倉頡碼，但仍可在敲 ` 之後輸入拼音：
 
-    # cangjie5.custom.yaml
-    patch:
-      abc_segmentor/extra_tags: {}
+```yaml
+# cangjie5.custom.yaml
+patch:
+  abc_segmentor/extra_tags: {}
+```
 
 #### 空碼時按空格鍵清空輸入碼
 
@@ -502,12 +546,14 @@ https://gist.github.com/2390510
 
 然後設定（以五筆86爲例）：
 
-    # wubi86.custom.yaml
-    patch:
-      translator/enable_sentence: false
-      key_binder/bindings:
-        - {when: has_menu, accept: space, send: space}
-        - {when: composing, accept: space, send: Escape}
+```yaml
+# wubi86.custom.yaml
+patch:
+  translator/enable_sentence: false
+  key_binder/bindings:
+    - {when: has_menu, accept: space, send: space}
+    - {when: composing, accept: space, send: Escape}
+```
 
 ### 模糊音
 
@@ -577,27 +623,33 @@ http://tieba.baidu.com/p/1909252328
 
 可是建立詞典稍顯繁瑣，而活用自定義標點，不失爲一個便捷的方法：
 
-    # luna_pinyin.custom.yaml
-    # 如果不需要 ` 鍵的倉頡反查拼音功能，則可利用 ` 鍵輸入自定義詞組
-    patch:
-      recognizer/patterns/reverse_lookup:
-      'punctuator/half_shape/`':
-        - '佛振 <chen.sst@gmail.com>'
-        - 'http://rime.github.io'
-        - 上天赋予你高的智商，教你用到有用的地方。
+```yaml
+# luna_pinyin.custom.yaml
+# 如果不需要 ` 鍵的倉頡反查拼音功能，則可利用 ` 鍵輸入自定義詞組
+patch:
+  recognizer/patterns/reverse_lookup:
+  'punctuator/half_shape/`':
+    - '佛振 <chen.sst@gmail.com>'
+    - 'http://rime.github.io'
+    - 上天赋予你高的智商，教你用到有用的地方。
+```
 
 上例 `recognizer/patterns/reverse_lookup:` 作用是關閉 ` 鍵的反查功能。若選用其他符號則不需要這行。又一例：
 
-    patch:
-      'punctuator/half_shape/*': '*_*'
+```yaml
+patch:
+  'punctuator/half_shape/*': '*_*'
+```
 
 `'punctuator/half_shape/*'` 因爲字符串包含符號，最好用 **單引號** 括起來；儘量不用雙引號以避免符號的轉義問題。
 
 然而，重定義「/」「+」「=」這些符號時，因其在節點路徑中有特殊含義，無法用上面演示的路徑連寫方式。
 因此對於標點符號，推薦的定製方法爲在輸入方案裏覆蓋定義 `half_shape` 或 `full_shape` 節點：
 
-    patch:
-      punctuator/half_shape:
-       '/': [ '/', '/hello', '/bye', '/* TODO */' ]
-       '+': '+_+'
-       '=': '=_='
+```yaml
+patch:
+  punctuator/half_shape:
+   '/': [ '/', '/hello', '/bye', '/* TODO */' ]
+   '+': '+_+'
+   '=': '=_='
+```
