@@ -22,6 +22,8 @@ Rime 已收錄於 [Ubuntu 12.10 (Quantal Quetzal)](http://old-releases.ubuntu.co
 
     sudo apt-get install ibus-rime
 
+    ibus restart
+
     ibus engine rime
 
 安裝更多輸入方案：（推薦使用 [/plum/](https://github.com/rime/plum) 安裝最新版本）
