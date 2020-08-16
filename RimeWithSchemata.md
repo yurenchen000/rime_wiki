@@ -616,7 +616,7 @@ https://github.com/lotem/rimeime/tree/master/doc/tutorial
 
 縮進表示設定項所屬的層次。在他處引用到此文檔中的設定項，可分別以 `schema/schema_id`, `schema/name`, `schema/version` 來指稱。
 
-我現在把寫好的方案文檔命名爲 `hello.schema.yaml`，丟進用戶資料夾——對，只要這一個文件就妥了；
+我現在把寫好的方案文檔命名爲 `hello.schema.yaml`，丟進用[用戶資料夾](https://github.com/rime/home/wiki/UserData "小狼毫:%APPDATA%\Rime 鼠鬚管:~/Library/Rime ibus-rime:~/.config/ibus/rime fcitx-rime:~/.config/fcitx/rime")，只要這一個文件就妥了；
 
 然後，啓用他。有些版本會有「方案選單設定」這個介面，在那裏勾選【大家好】這個方案即可。若無有設定介面，則按照上文《定製方案選單》一節來做。
 
