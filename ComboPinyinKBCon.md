@@ -53,13 +53,17 @@ Rime 輸入方案：[`combo_pinyin_kbcon`](https://github.com/rime/rime-combo-pi
 適用鍵盤型號及固件
 ---
 
-理論上凡左右手拇指位各有一可編程按鍵者皆可使用。
+理論上，凡左右手拇指位各有一獨立按鍵的可編程鍵盤皆適用。
+
+只需要將左手拇指位置的按鍵編程爲 **左 Shift** 鍵，對應宮保拼音碼 `H`；右手拇指操作空格鍵。其他按鍵沿用 QWERTY 佈局。
+
 筆者已將本式宮保拼音用於以下鍵盤型號：
 
-  - AMJ40:   http://github.com/lotem/AMJ40/tree/kbcon
-  - ErgoDox: http://github.com/lotem/ergodox-firmware/tree/kbcon
+  - AMJ40: `make amj40:kbcon`
+  - Ergodox: `make ergodox_ez:kbcon`
 
-預設鍵位左手拇指位映射爲其他功能鍵，通過佈局切換鍵開啓「宮保拼音」佈局後，左手拇指位變爲「`;`」鍵，對應宮保拼音碼 `H`。
+以上兩款鍵盤的固件程序：
+https://github.com/lotem/qmk_firmware
 
 本式宮保拼音亦可用於標準 PC 鍵盤，對其兼容的佈局和指法詳見下文。
 
@@ -69,7 +73,10 @@ Rime 輸入方案：[`combo_pinyin_kbcon`](https://github.com/rime/rime-combo-pi
 ---
 
 該佈局是對「鍵盤控式」宮保拼音佈局的擴展，使其適用標準 PC 鍵盤。
+
 主要區別是不使用左手拇指位 `H` 鍵，而改用主鍵盤區中排第 1 列的 `H'` 鍵，由左手小指操作。
+
+librime>=1.6 以上版本，還可使用標準鍵位的左 Shift 鍵代替 `H` 鍵，也用左手小指操作。
 
 由同一個輸入方案 `combo_pinyin_kbcon` 實現，無須切換輸入方案。
 
