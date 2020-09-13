@@ -55,7 +55,10 @@ Rime 輸入方案：[`combo_pinyin_kbcon`](https://github.com/rime/rime-combo-pi
 
 理論上，凡左右手拇指位各有一獨立按鍵的可編程鍵盤皆適用。
 
-只需要將左手拇指位置的按鍵編程爲 **左 Shift** 鍵，對應宮保拼音碼 `H`；右手拇指操作空格鍵。其他按鍵沿用 QWERTY 佈局。
+只需要將左手拇指位置的按鍵編程爲左 Control 鍵，對應宮保拼音碼 `H`；右手拇指操作空格鍵。其他按鍵沿用 QWERTY 佈局。
+
+該左手拇指鍵也可編程爲左 Shift 鍵。在輸入方案代碼中設有相應的開關。
+如果選用 Control 鍵，請在系統設置裏禁用 Control+space 等與宮保拼音輸入有衝突的快捷鍵。
 
 筆者已將本式宮保拼音用於以下鍵盤型號：
 
@@ -76,9 +79,9 @@ https://github.com/lotem/qmk_firmware
 
 主要區別是不使用左手拇指位 `H` 鍵，而改用主鍵盤區中排第 1 列的 `H'` 鍵，由左手小指操作。
 
-librime>=1.6 以上版本，還可使用標準鍵位的左 Shift 鍵代替 `H` 鍵，也用左手小指操作。
+librime>=1.6 以上版本，還可使用標準鍵位的左 Control 鍵或左 Shift 鍵代替 `H` 鍵，也用左手小指操作。
 
-由同一個輸入方案 `combo_pinyin_kbcon` 實現，無須切換輸入方案。
+「鍵盤控」兼容佈局由同一個輸入方案 `combo_pinyin_kbcon` 實現。如果不需要用到 Control 鍵並擊，可以在輸入方案裏關閉相關的代碼補丁。
 
        (C') Ln  Dt (T')     u   I   O
     H'  S   Cr  Z*  Gk      i*  N   E
