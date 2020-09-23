@@ -128,7 +128,7 @@ http://www.boost.org/doc/libs/1_49_0/libs/regex/doc/html/boost_regex/syntax/perl
 
 [用戶資料夾](https://github.com/rime/home/wiki/UserData)
   * 【中州韻】  `~/.config/ibus/rime/` （0.9.1 以下版本爲 `~/.ibus/rime/`）
-  * 【小狼毫】  `%APPDATA%\Rime`
+  * 【小狼毫】  `"%APPDATA%\Rime"`
   * 【鼠鬚管】  `~/Library/Rime/`
 
 [共享資料夾](https://github.com/rime/home/wiki/SharedData) 包含預設輸入方案的源文件。
@@ -158,12 +158,6 @@ http://www.boost.org/doc/libs/1_49_0/libs/regex/doc/html/boost_regex/syntax/perl
   * ※〔用戶對全局設定的定製信息〕 `default.custom.yaml`
   * ※〔用戶對預設輸入方案的定製信息〕 `<方案標識>.custom.yaml`
   * ※〔用戶自製輸入方案〕及配套的詞典源文件
-
-调试日誌：
-  * 【中州韻】 /tmp/rime.ibus.*
-  * 【小狼毫】 %TEMP%\rime.weasel.*
-  * 【鼠鬚管】 $TMPDIR/rime.squirrel.*
-  * 各發行版的早期版本 用戶資料夾/rime.log
 
 註：以上標有 ※ 號的文件，包含用戶資料，您在清理文件時要注意備份！
 
@@ -288,13 +282,12 @@ Rime 可以在不同會話裏使用不同輸入方案。因爲有「方案選單
 
 ### 理解 Processors
 
-Processor，意思即“處理器”。  
 輸入引擎，作爲整體來看，以按鍵消息爲輸入，輸出包括三部分：
   * 一是對按鍵消息的處理結果：操作系統要一個結果、這按鍵、輪入法接是不接？
   * 二是暫存於輸入法、尚未完成處理的內容，會展現在輸入法候選窗中。
   * 三是要「上屏」的文字，並不是每按一鍵都有輸出。通常中文字都會伴隨「確認」動作而上屏，有些按鍵則會直接導致符號上屏，而這些還要視具體場景而定。
 
-第一類功能組件 `processor`s，就是比較籠統地、起着「處理」按鍵消息的作用，并且他們指定了。
+那麼第一類功能組件 `processor`s，就是比較籠統地、起着「處理」按鍵消息的作用。
 
 按鍵消息依次送往列表中的 `processor`，由他給出對按鍵的處理意見：
   * 或曰「收」、即由 Rime 響應該按鍵；
@@ -310,7 +303,7 @@ Processor，意思即“處理器”。
 
 ### 理解 Segmentors
 
-Segment是段落的意思，segmentor意即分段器，將用戶連續輸入的文字、數字、符號等不同內容按照需要，識別不同格式的輸入碼，將輸入碼分成若干段分而治之。
+Rime 可將文字、數字、符號等不同內容連續輸入，此時需要識別不同格式的輸入碼、將輸入碼分成若干段分而治之。
 這通過數輪代碼段劃分操作完成。每一輪操作中、一衆 `segmentor`s 分別給出起始於某一處、符合特定格式的代碼段，識別到的最長代碼段成爲本輪劃分的結果，而給出這一劃分的一個或多個 `segmentor` 組件則可爲該代碼段打上「類型標籤」；從這一新代碼段的結束位置，開始下一輪劃分，直到整個輸入碼序列劃分完畢。
 
 舉例來說，【朙月拼音】中，輸入碼 `2012nian\`，劃分爲三個編碼段：`2012`（貼`number`標籤）、`nian`（貼`abc`標籤）、`\`（貼`punct`標籤）。
@@ -353,8 +346,7 @@ Segment是段落的意思，segmentor意即分段器，將用戶連續輸入的�
 概括起來，這是兩種構造新編碼的方式：羅馬字式輸入方案以一組固定的基本音節碼創造新的組合而構詞，而碼表式輸入方案則以一定碼長爲限創造新的編碼映射而構詞。
 
 ### 理解 Filters
-  
-Filter即過濾器。
+
 上一步已經收集到各個代碼段的翻譯結果，當輸入法需要在介面呈現一頁候選項時，就從最末一個代碼段的結果集中挑選、直至取夠方案中設定的頁最大候選數。
 
 每從結果集選出一條字詞、會經過一組 `filter`s 過濾。多個 `filter` 串行工作，最終產出的結果進入候選序列。
@@ -624,11 +616,7 @@ https://github.com/lotem/rimeime/tree/master/doc/tutorial
 
 縮進表示設定項所屬的層次。在他處引用到此文檔中的設定項，可分別以 `schema/schema_id`, `schema/name`, `schema/version` 來指稱。
 
-我現在把寫好的方案文檔命名爲 `hello.schema.yaml`，丟進[用戶資料夾](https://github.com/rime/home/wiki/UserData 
-"小狼毫: %APPDATA%\Rime 
-鼠鬚管: ~/Library/Rime 
-ibus-rime: ~/.config/ibus/rime 
-fcitx-rime: ~/.config/fcitx/rime")，只要這一個文件就妥了；
+我現在把寫好的方案文檔命名爲 `hello.schema.yaml`，丟進用戶資料夾——對，只要這一個文件就妥了；
 
 然後，啓用他。有些版本會有「方案選單設定」這個介面，在那裏勾選【大家好】這個方案即可。若無有設定介面，則按照上文《定製方案選單》一節來做。
 
