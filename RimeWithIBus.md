@@ -75,17 +75,10 @@ Ubuntu 12.04 以下版本，參考下文的安裝手記。
 
     sudo yum install ibus-rime
 
-## Fedora 17
+## OpenSUSE tumbleweed & 15
+    
+    sudo zypper in ibus-rime
 
-轉自 http://hi.baidu.com/swordswift/item/68e8584728dc900cc1161393
-
-swordswift: 因为fedora下没有打包好的安装包，所以我就做了一个安装源，也算是对作者的支持和感谢吧。
-
-安装办法:
-
-    cd /etc/yum.repos.d/
-    sudo wget http://heimu-packages.stor.sinaapp.com/fedora/heimu.repo
-    sudo yum install ibus-rime
 
 有手藝、有時間、熱心腸的Linux技術高手！ 請幫我把Rime打包到你喜愛的Linux發行版，分享給其他同學吧。
 
