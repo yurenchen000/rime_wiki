@@ -449,6 +449,8 @@ patch:
 
 https://gist.github.com/2290714
 
+ibus用户则可以使用 `ibus_rime.custom.yaml`
+
 ### 在特定程序裏關閉中文輸入
 
 【鼠鬚管】0.9.9 開始支持這項設定：
