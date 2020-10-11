@@ -195,26 +195,6 @@ punctuator:
 
 通過這種方法，既直接繼承了大多數符號的默認定義，又做到了局部的個性化。
 
-### 使用全套西文標點
-
-有些用戶習慣在中文裏使用ASCII標點，那麼與其一個一個覆寫，不如 *整套都換掉* 。
-
-取得這份設定檔——
-[Rime 別樣設定，使用西文標點](http://gist.github.com/2334409)
-在用戶資料夾保存爲 `alternative.yaml` ；
-
-再將輸入方案中的「導入 `default` 設定」通過打 patch 替換爲「導入 `alternative` 設定」
-
-```yaml
-# luna_pinyin.custom.yaml
-
-patch:
-  'punctuator/import_preset': alternative
-```
-
-就換上了自己習慣的一套標點！
-
-
 ### 一例、定製簡化字輸出
 
 *注意：*
