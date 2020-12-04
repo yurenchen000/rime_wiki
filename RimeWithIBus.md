@@ -22,10 +22,6 @@ Rime 已收錄於 [Ubuntu 12.10 (Quantal Quetzal)](http://old-releases.ubuntu.co
 
     sudo apt-get install ibus-rime
 
-    ibus restart
-
-    ibus engine rime
-
 安裝更多輸入方案：（推薦使用 [/plum/](https://github.com/rime/plum) 安裝最新版本）
 
     # 朙月拼音（預裝）
@@ -51,22 +47,6 @@ Rime 已收錄於 [Ubuntu 12.10 (Quantal Quetzal)](http://old-releases.ubuntu.co
     # 中古漢語拼音
     sudo apt-get install librime-data-zyenpheng
 
-## Ubuntu PPA
-
-for Ubuntu 12.04 and higher
-
-    # this repo provides libkyotocabinet, libgoogle-glog for Ubuntu 12.04;
-    # these packages are officially supported since Ubuntu 12.10.
-    sudo add-apt-repository ppa:fcitx-team/nightly
-
-    # providing libyaml-cpp0.5, librime, rime-data, ibus-rime
-    sudo add-apt-repository ppa:lotem/rime
-
-    sudo apt-get update
-    sudo apt-get install ibus-rime
-
-Ubuntu 12.04 以下版本，參考下文的安裝手記。
-
 ## Fedora 22+
 
     sudo dnf install ibus-rime
@@ -79,7 +59,6 @@ Ubuntu 12.04 以下版本，參考下文的安裝手記。
     
     sudo zypper in ibus-rime
 
-
 有手藝、有時間、熱心腸的Linux技術高手！ 請幫我把Rime打包到你喜愛的Linux發行版，分享給其他同學吧。
 
 謝謝你們！
@@ -89,6 +68,7 @@ Ubuntu 12.04 以下版本，參考下文的安裝手記。
 ## Prerequisites
 
 To build la rime, you need these tools and libraries:
+  * capnproto (for librime>=1.6)
   * cmake
   * boost >= 1.46
   * glog (for librime>=0.9.3)
@@ -98,30 +78,39 @@ To build la rime, you need these tools and libraries:
   * kyotocabinet (for librime<=1.2)
   * leveldb (for librime>=1.3, replacing kyotocabinet)
   * libmarisa (for librime>=1.2)
-  * opencc 0.x
-  * yaml-cpp >= 0.5
+  * opencc
+  * yaml-cpp
 
 Note: If your compiler doesn't fully support C++11, please checkout `oldschool` branch from https://github.com/rime/librime/tree/oldschool
 
 ## Build and install ibus-rime
 
-clone project and submodules:
+Checkout the repository:
 
-    git clone --recursive https://github.com/rime/ibus-rime.git
+    git clone https://github.com/rime/ibus-rime.git
     cd ibus-rime
-    # do this as normal user
-    ./install.sh
+
+If you haven't installed dependencies (librime, rime-data), install those first:
+
+    git submodule update --init
+    (cd librime; make && sudo make install)
+    (cd plum; make && sudo make install)
+    
+Finally:
+
+    make
+    sudo make install
 
 ## Configure IBus
 
-  * restart IBus
-  * add "Rime" to the input method list in IBus Preferences
+  * restart IBus (`ibus-daemon -drx`)
+  * in IBus Preferences (`ibus-setup`), add "Chinese - Rime" to the input method list
 
 Voilà !
 
 ## ibus-rime on Ubuntu 12.04 安裝手記
 
-註：這篇文章過時了。Ubuntu 12.04 可直接使用上文給出的 PPA 安裝最新版本。
+註：這篇文章過時了。
 
 今天天氣不錯，我更新了一把Ubuntu，記錄下安裝 ibus-rime 的步驟。
 
@@ -134,53 +123,8 @@ Voilà !
     sudo apt-get install libboost-dev libboost-filesystem-dev libboost-regex-dev libboost-signals-dev libboost-system-dev libboost-thread-dev
     # 如果不嫌多，也可以安裝整套Boost開發包（敲字少：）
     # sudo apt-get install libboost-all-dev
-
-
-    mkdir ~/rimeime
-    cd ~/rimeime
-
-    wget http://google-glog.googlecode.com/files/glog-0.3.2.tar.gz
-    tar xzf glog-0.3.2.tar.gz
-    cd glog-0.3.2
-    ./configure
-    make
-    sudo make install
-
-    cd ~/rimeime
-
-    wget http://fallabs.com/kyotocabinet/pkg/kyotocabinet-1.2.76.tar.gz
-    tar xzf kyotocabinet-1.2.76.tar.gz
-    cd kyotocabinet-1.2.76
-    ./configure
-    make
-    sudo make install
-
-    cd ~/rimeime
-
-    wget http://yaml-cpp.googlecode.com/files/yaml-cpp-0.3.0.tar.gz
-    tar xzf yaml-cpp-0.3.0.tar.gz
-    cd yaml-cpp
-    mkdir build
-    cd build
-    cmake -DBUILD_SHARED_LIBS=ON ..
-    make
-    sudo make install
-
-
-    sudo ldconfig
-
-
-    cd ~/rimeime
-
-    wget http://rimeime.googlecode.com/files/brise-0.13.tar.gz
-    wget http://rimeime.googlecode.com/files/librime-0.9.4.tar.gz
-    wget http://rimeime.googlecode.com/files/ibus-rime-0.9.4.tar.gz
-    tar xzf brise-0.13.tar.gz
-    tar xzf librime-0.9.4.tar.gz
-    tar xzf ibus-rime-0.9.4.tar.gz
-    cd ibus-rime
-    ./install.sh
-
+    
+    # 下文略……
 
 ## ibus-rime on Centos 7
 ```
@@ -199,15 +143,6 @@ cd /usr/src
 git clone --recursive https://github.com/rime/ibus-rime.git
 
 cd /usr/src/ibus-rime
-./install.sh
+# 下文略，同前文給出的安裝步驟
 
-# checkout master & pull
-cd /usr/src/ibus-rime/plum/
-git checkout master
-git pull origin master
-
-cd /usr/src/ibus-rime
-# skip submodule init
-sed -i 's/git submodule update --init/#git submodule update --init/g' ./install.sh
-./install.sh
 ```
