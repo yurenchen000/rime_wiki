@@ -57,15 +57,16 @@ Rime 輸入方案：[`combo_pinyin_kbcon`](https://github.com/rime/rime-combo-pi
 
 只需要將左手拇指位置的按鍵編程爲左 Control 鍵，對應宮保拼音碼 `H`；右手拇指操作空格鍵。其他按鍵沿用 QWERTY 佈局。
 
-該左手拇指鍵也可編程爲左 Shift 鍵。在輸入方案代碼中設有相應的開關。
+該左手拇指鍵也可編程爲左 Shift 鍵、分號鍵等。在輸入方案代碼中設有相應的開關。
 如果選用 Control 鍵，請在系統設置裏禁用 Control+space 等與宮保拼音輸入有衝突的快捷鍵。
 
 筆者已將本式宮保拼音用於以下鍵盤型號：
 
   - AMJ40: `make amj40:kbcon`
+  - crkbd: `make crkbd:kbcon`
   - Ergodox: `make ergodox_ez:kbcon`
 
-以上兩款鍵盤的固件程序：
+以上鍵盤的固件程序：
 https://github.com/lotem/qmk_firmware
 
 本式宮保拼音亦可用於標準 PC 鍵盤，對其兼容的佈局和指法詳見下文。
