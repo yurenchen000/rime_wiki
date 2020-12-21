@@ -48,7 +48,9 @@ Rime 輸入方案：[`combo_pinyin_kbcon`](https://github.com/rime/rime-combo-pi
     iNE = ing, uNE (uIO) = ong, yuNE (yuUE') = iong,
     uANE (uAIO) = uang
 
-![宮保拼音·鍵盤控式](https://github.com/rime/home/raw/master/images/combo-pinyin-kbcon-amj40.jpg)
+![宮保拼音·鍵盤控式](https://github.com/rime/home/raw/master/images/combo-pinyin-kbcon-chicory-relabeled.jpg)
+
+[另一幅狂放的實拍鍵位圖](https://github.com/rime/home/raw/master/images/combo-pinyin-kbcon-amj40.jpg)
 
 適用鍵盤型號及固件
 ---
@@ -112,6 +114,6 @@ PC 鍵盤組合聲母及活用
 筆者由「大衆式」切換到「鍵盤控式」以來，打字技巧又有所提高。
 
 主觀感受是按鍵更省力、對思維的干擾也小一些。略加練習已經可以跟打節奏較爲舒緩的歌詞了。
-https://www.youtube.com/watch?v=Qsvtb4oNwoQ
+[視頻演示（菜）](https://www.youtube.com/watch?v=Qsvtb4oNwoQ)
 
 這歸因於本式佈局和指法簡化、規律性更強、更充分地利用了拇指的優勢並擊能力。
