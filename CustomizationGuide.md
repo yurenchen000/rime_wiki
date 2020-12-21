@@ -449,7 +449,7 @@ patch:
 
 https://gist.github.com/2290714
 
-ibus用户则可以使用 `ibus_rime.custom.yaml`
+ibus用户： `ibus_rime.custom.yaml` 不包含控制配色、字體字號等外觀樣式的設定項。
 
 ### 在特定程序裏關閉中文輸入
 
