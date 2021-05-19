@@ -160,9 +160,9 @@ http://www.boost.org/doc/libs/1_49_0/libs/regex/doc/html/boost_regex/syntax/perl
   * ※〔用戶自製輸入方案〕及配套的詞典源文件
 
 日誌：
-  * 【中州韻】 /tmp/rime.ibus.*
-  * 【小狼毫】 %TEMP%\rime.weasel.*
-  * 【鼠鬚管】 $TMPDIR/rime.squirrel.*
+  * 【中州韻】 `/tmp/rime.ibus.*`
+  * 【小狼毫】 `%TEMP%\rime.weasel.*`
+  * 【鼠鬚管】 `$TMPDIR/rime.squirrel.*`
   * 各發行版的早期版本 用戶資料夾/rime.log
 
 註：以上標有 ※ 號的文件，包含用戶資料，您在清理文件時要注意備份！
@@ -1186,7 +1186,7 @@ Rime 裏的符號有「全角」、「半角」兩種狀態。本方案裏暫不
 
 ※注意： **不要** 從網頁複製以上代碼到實作的詞典文件！因爲網頁裏製表符被轉換成空格從而不符合 Rime 詞典要求的格式。
 
-※注意： 常用編輯器如VS editor以及Notepad++等軟體遇見*.yaml檔案時會預設禁止tab(ascii hex code 09)的使用，而將使用者鍵入的tab按鍵轉換成兩個空白(ascii hex code 20 20)。請一定要使用製表符來進行詞典文件的編輯。
+※注意： 常用編輯器如VS editor以及Notepad++等軟體遇見 \*.yaml檔案時會預設禁止tab(ascii hex code 09)的使用，而將使用者鍵入的tab按鍵轉換成兩個空白(ascii hex code 20 20)。請一定要使用製表符來進行詞典文件的編輯。
 
 碼表裏給出了一個「示例」規格的小字集。其中包含幾組重碼字。
 
