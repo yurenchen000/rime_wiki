@@ -23,7 +23,7 @@
       - [【鼠鬚管】外觀與鍵盤設定](#鼠鬚管外觀與鍵盤設定)
     - [在特定程序裏關閉中文輸入](#在特定程序裏關閉中文輸入)
     - [輸入習慣](#輸入習慣)
-      - [使用Control鍵切換中西文](#使用control鍵切換中西文)
+      - [使用 Control 鍵切換中西文](#使用 control 鍵切換中西文)
       - [方便地輸入含數字的西文用戶名](#方便地輸入含數字的西文用戶名)
       - [以方括號鍵換頁](#以方括號鍵換頁)
       - [使用西文標點兼以方括號鍵換頁](#使用西文標點兼以方括號鍵換頁)
@@ -39,7 +39,7 @@
     - [編碼反查](#編碼反查)
       - [設定【速成】的反查碼爲粵拼](#設定速成的反查碼爲粵拼)
       - [設定【倉頡】的反查碼爲雙拼](#設定倉頡的反查碼爲雙拼)
-    - [在Mac系統上輸入emoji表情](#在mac系統上輸入emoji表情)
+    - [在 Mac 系統上輸入 emoji 表情](#在 mac 系統上輸入 emoji 表情)
     - [五筆簡入繁出](#五筆簡入繁出)
       - [修正不對稱繁簡字](#修正不對稱繁簡字)
     - [活用標點創建自定義詞組](#活用標點創建自定義詞組)
@@ -96,13 +96,13 @@ patch:
   "一級設定項/二級設定項/三級設定項": 新的設定值
   "另一個設定項": 新的設定值
   "再一個設定項": 新的設定值
-  "含列表的設定項/@n": 列表第n個元素新的設定值，從0開始計數
+  "含列表的設定項/@n": 列表第 n 個元素新的設定值，從 0 開始計數
   "含列表的設定項/@last": 列表最後一個元素新的設定值
   "含列表的設定項/@before 0": 在列表第一個元素之前插入新的設定值（不建議在補靪中使用）
   "含列表的設定項/@after last": 在列表最後一個元素之後插入新的設定值（不建議在補靪中使用）
   "含列表的設定項/@next": 在列表最後一個元素之後插入新的設定值（不建議在補靪中使用）
   "含列表的設定項/+": 與列表合併的設定值（必須爲列表）
-  "含字典的設定項/+": 與字典合併的設定值（必須爲字典，注意YAML字典的無序性）
+  "含字典的設定項/+": 與字典合併的設定值（必須爲字典，注意 YAML 字典的無序性）
 ```
 
 就是這樣：`patch` 定義了一組「補靪」，以源文件中的設定爲基礎，寫入新的設定項、或以新的設定值取代現有設定項的值。
@@ -112,7 +112,7 @@ patch:
 
 ### 一例、定製每頁候選數
 
-Rime 中，默認每頁至多顯示 5 個候選項，而允許的範圍是 1〜9（個別 Rime 發行版可支持10個候選）。
+Rime 中，默認每頁至多顯示 5 個候選項，而允許的範圍是 1〜9（個別 Rime 發行版可支持 10 個候選）。
 
 設定每頁候選個數的默認值爲 9，在用戶目錄建立文檔 `default.custom.yaml` ：
 
@@ -240,7 +240,7 @@ engine:
   * Rime 會記憶您的選擇，下次打開輸入法時、直接切換到所選的字形。
   * 亦可無視上次記住的選擇，在方案中重設初始值：`reset` 設爲 0 或 1，分別選中 `states` 列表中的兩種狀態。
 
-如果日常應用以簡化字爲主`:-(`，則每每在〔方案選單〕中切換十分不便；
+如果日常應用以簡化字爲主 `:-(`，則每每在〔方案選單〕中切換十分不便；
 於是佛振獻上默認輸出簡化字的設定檔：
 
 ```yaml
@@ -301,7 +301,7 @@ simplifier:
 
 有些用戶習慣默認英文輸出，在需要用中文時再做切換。這就需要我們在方案中重設狀態開關初始值。
 
-還記得否？我們可用`reset`設定項在方案中爲某些狀態開關重設初始值：`reset` 設爲 0 或 1，分別選中 `states` 列表中的兩種狀態。
+還記得否？我們可用 `reset` 設定項在方案中爲某些狀態開關重設初始值：`reset` 設爲 0 或 1，分別選中 `states` 列表中的兩種狀態。
 
 我們以【朙月拼音】爲例：
 
@@ -309,7 +309,7 @@ simplifier:
 # luna_pinyin.custom.yaml
 
 patch:
-  "switches/@0/reset": 1  #表示將 switcher 列表中的第一個元素（即 ascii_mode 開關）的初始值重設爲狀態1（即「英文」）。
+  "switches/@0/reset": 1  #表示將 switcher 列表中的第一個元素（即 ascii_mode 開關）的初始值重設爲狀態 1（即「英文」）。
 ```
 
 
@@ -356,7 +356,7 @@ patch:
  * Release——按鍵被放開，而不是按下
  * Shift
  * Control
- * Alt——Windows上 Alt+字母 會被系統優先識別爲程序菜單項的快捷鍵，當然 Alt+Tab 也不可用
+ * Alt——Windows 上 Alt+字母 會被系統優先識別爲程序菜單項的快捷鍵，當然 Alt+Tab 也不可用
  * 嗯，Linux 發行版還支持 Super, Meta 等組合鍵，不過最好選每個平臺都能用的啦
 
 按鍵的名稱，大小寫字母和數字都用他們自己表示，其他的按鍵名稱 [參考這裏](https://github.com/rime/librime/blob/master/thirdparty/include/X11/keysymdef.h) [这个更直观的文档](https://github.com/LEOYoon-Tsaw/Rime_collections/blob/master/Rime_description.md) 的定義，去除代碼前綴 `XK_` 即是。
@@ -387,7 +387,7 @@ patch:
   "preset_color_schemes/starcraft":  # 在配色方案列表裏加入標識爲 starcraft 的新方案
     name: 星際我爭霸／StarCraft
     author: Contralisk <contralisk@gmail.com>, original artwork by Blizzard Entertainment
-    text_color: 0xccaa88             # 編碼行文字顏色，24位色值，用十六進制書寫方便些，順序是藍綠紅0xBBGGRR
+    text_color: 0xccaa88             # 編碼行文字顏色，24 位色值，用十六進制書寫方便些，順序是藍綠紅 0xBBGGRR
     candidate_text_color: 0x30bb55   # 候選項文字顏色，當與文字顏色不同時指定
     back_color: 0x000000             # 底色
     border_color: 0x1010a0           # 邊框顏色，與底色相同則爲無邊框的效果
@@ -439,7 +439,7 @@ https://gist.github.com/2309739
 # weasel.custom.yaml
 patch:
   style/horizontal: true      # 候選橫排
-  style/inline_preedit: true  # 內嵌編碼（僅支持TSF）
+  style/inline_preedit: true  # 內嵌編碼（僅支持 TSF）
   style/display_tray_icon: true  # 顯示托盤圖標
 ```
 
@@ -449,7 +449,7 @@ patch:
 
 https://gist.github.com/2290714
 
-ibus用户： `ibus_rime.custom.yaml` 不包含控制配色、字體字號等外觀樣式的設定項。
+ibus 用户： `ibus_rime.custom.yaml` 不包含控制配色、字體字號等外觀樣式的設定項。
 
 ### 在特定程序裏關閉中文輸入
 
@@ -488,18 +488,18 @@ patch:
 
 ### 輸入習慣
 
-#### 使用Control鍵切換中西文
+#### 使用 Control 鍵切換中西文
 
 https://gist.github.com/2981316
 
-以及修改Caps Lock、左右Shift、左右Control鍵的行爲，提供三種切換方式。
+以及修改 Caps Lock、左右 Shift、左右 Control 鍵的行爲，提供三種切換方式。
 詳見 Gist 代碼註釋。
 
 #### 方便地輸入含數字的西文用戶名
 
 通常，輸入以小寫拉丁字母組成的編碼後，數字鍵的作用是選擇相應序號的候選字。
 
-假設我的郵箱地址是 `rime123@company.com`，則需要在輸入rime之後上屏或做臨時中西文切換，方可輸入數字部分。
+假設我的郵箱地址是 `rime123@company.com`，則需要在輸入 rime 之後上屏或做臨時中西文切換，方可輸入數字部分。
 
 爲了更方便輸入我的用戶名 `rime123`，設置一組特例，將 `rime` 與其後的數字優先識別西文：
 
@@ -537,7 +537,7 @@ patch:
 
 #### 關閉用戶詞典和字頻調整
 
-以【五笔86】爲例：
+以【五笔 86】爲例：
 
 ```yaml
 # wubi86.custom.yaml
@@ -573,7 +573,7 @@ patch:
 
 首先需要關閉碼表輸入法連打（參見上文），這樣才可以在打空時不出候選詞。
 
-然後設定（以五筆86爲例）：
+然後設定（以五筆 86 爲例）：
 
 ```yaml
 # wubi86.custom.yaml
@@ -612,9 +612,9 @@ https://gist.github.com/2944320
 
 https://gist.github.com/2944319
 
-### 在Mac系統上輸入emoji表情
+### 在 Mac 系統上輸入 emoji 表情
 
-以下配置方法已過時，新的emoji用法見 https://github.com/rime/rime-emoji
+以下配置方法已過時，新的 emoji 用法見 https://github.com/rime/rime-emoji
 
 <del>
 參考 https://gist.github.com/2309739 把 `emoji` 加入輸入方案選單；
@@ -648,7 +648,7 @@ http://tieba.baidu.com/p/1909252328
 
 ### 活用標點創建自定義詞組
 
-在【朙月拼音】裏添加一些自定義文字、符號。可以按照上文設定「emoji表情」的方式爲自定義詞組創建一個專門的詞典。
+在【朙月拼音】裏添加一些自定義文字、符號。可以按照上文設定「emoji 表情」的方式爲自定義詞組創建一個專門的詞典。
 
 可是建立詞典稍顯繁瑣，而活用自定義標點，不失爲一個便捷的方法：
 
