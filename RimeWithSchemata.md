@@ -95,11 +95,13 @@ Rime 中所有文本文檔，均要求以 UTF-8 編碼，並建議使用 UNIX �
 鑑於一些文本編輯器會爲 UTF-8 編碼的文件添加 BOM 標記，爲防止誤將該字符混入文中，
 莫要從文件的第一行開始正文，而請在該行行首以 # 記號起一行註釋，如：
 
-    # Rime default settings
+```yaml
+# Rime default settings
 
-    # Rime schema: My First Cool Schema
+# Rime schema: My First Cool Schema
 
-    # Rime dictionary: Lingua Latina
+# Rime dictionary: Lingua Latina
+```
 
 也可繼續以註釋行寫下方案簡介、碼表來源、製作者、修訂記錄等信息，再切入正文。
 
@@ -159,12 +161,6 @@ http://www.boost.org/doc/libs/1_49_0/libs/regex/doc/html/boost_regex/syntax/perl
   * ※〔用戶對預設輸入方案的定製信息〕 `<方案標識>.custom.yaml`
   * ※〔用戶自製輸入方案〕及配套的詞典源文件
 
-日誌：
-  * 【中州韻】 `/tmp/rime.ibus.*`
-  * 【小狼毫】 `%TEMP%\rime.weasel.*`
-  * 【鼠鬚管】 `$TMPDIR/rime.squirrel.*`
-  * 各發行版的早期版本 用戶資料夾/rime.log
-
 註：以上標有 ※ 號的文件，包含用戶資料，您在清理文件時要注意備份！
 
 # 詳解輸入方案
@@ -177,16 +173,18 @@ http://www.boost.org/doc/libs/1_49_0/libs/regex/doc/html/boost_regex/syntax/perl
 
 文檔中需要有這樣一組方案描述：
 
-    # 以下代碼片段節選自 luna_pinyin.schema.yaml
+```yaml
+# 以下代碼片段節選自 luna_pinyin.schema.yaml
 
-    schema:
-      schema_id: luna_pinyin
-      name: 朙月拼音
-      version: "0.9"
-      author:
-        - 佛振 <chen.sst@gmail.com>
-      description: |
-        Rime 預設的拼音輸入方案。
+schema:
+  schema_id: luna_pinyin
+  name: 朙月拼音
+  version: "0.9"
+  author:
+    - 佛振 <chen.sst@gmail.com>
+  description: |
+    Rime 預設的拼音輸入方案。
+```
 
 首先來爲方案命名。`schema/name` 字段是顯示在〔方案選單〕中的名稱。
 
@@ -212,11 +210,13 @@ http://www.boost.org/doc/libs/1_49_0/libs/regex/doc/html/boost_regex/syntax/perl
 
 `schema/author` ——列出作者和主要貢獻者，格式爲文字列表：
 
-    schema:
-      author:
-        - 作者甲 <alpha@rime.org>
-        - 作者乙 <beta@rime.org>
-        - 作者丙
+```yaml
+schema:
+  author:
+    - 作者甲 <alpha@rime.org>
+    - 作者乙 <beta@rime.org>
+    - 作者丙
+```
 
 `schema/description` ——對方案作簡要介紹的多行文字。
 
@@ -248,39 +248,43 @@ Rime 可以在不同會話裏使用不同輸入方案。因爲有「方案選單
 
 好，看代碼：
 
-    # luna_pinyin.schema.yaml
-    # ...
+```yaml
+# luna_pinyin.schema.yaml
+# ...
 
-    engine:                    # 輸入引擎設定，即掛接組件的「處方」
-      processors:              # 一、這批組件處理各類按鍵消息
-        - ascii_composer       # ※ 處理西文模式及中西文切換
-        - recognizer           # ※ 與 matcher 搭配，處理符合特定規則的輸入碼，如網址、反查等
-        - key_binder           # ※ 在特定條件下將按鍵綁定到其他按鍵，如重定義逗號、句號爲候選翻頁鍵
-        - speller              # ※ 拼寫處理器，接受字符按鍵，編輯輸入碼
-        - punctuator           # ※ 句讀處理器，將單個字符按鍵直接映射爲文字符號
-        - selector             # ※ 選字處理器，處理數字選字鍵、上、下候選定位、換頁鍵
-        - navigator            # ※ 處理輸入欄內的光標移動鍵
-        - express_editor       # ※ 編輯器，處理空格、回車上屏、回退鍵等
-      segmentors:              # 二、這批組件識別不同內容類型，將輸入碼分段
-        - ascii_segmentor      # ※ 標識西文段落
-        - matcher              # ※ 標識符合特定規則的段落，如網址、反查等
-        - abc_segmentor        # ※ 標識常規的文字段落
-        - punct_segmentor      # ※ 標識句讀段落
-        - fallback_segmentor   # ※ 標識其他未標識段落
-      translators:             # 三、這批組件翻譯特定類型的編碼段爲一組候選文字
-        - echo_translator      # ※ 沒有其他候選字時，回顯輸入碼
-        - punct_translator     # ※ 轉換標點符號
-        - script_translator    # ※ 腳本翻譯器，用於拼音等基於音節表的輸入方案
-        - reverse_lookup_translator  # ※ 反查翻譯器，用另一種編碼方案查碼
-      filters:                 # 四、這批組件過濾翻譯的結果
-        - simplifier           # ※ 繁簡轉換
-        - uniquifier           # ※ 過濾重複的候選字，有可能來自繁簡轉換
+engine:                    # 輸入引擎設定，即掛接組件的「處方」
+  processors:              # 一、這批組件處理各類按鍵消息
+    - ascii_composer       # ※ 處理西文模式及中西文切換
+    - recognizer           # ※ 與 matcher 搭配，處理符合特定規則的輸入碼，如網址、反查等
+    - key_binder           # ※ 在特定條件下將按鍵綁定到其他按鍵，如重定義逗號、句號爲候選翻頁鍵
+    - speller              # ※ 拼寫處理器，接受字符按鍵，編輯輸入碼
+    - punctuator           # ※ 句讀處理器，將單個字符按鍵直接映射爲文字符號
+    - selector             # ※ 選字處理器，處理數字選字鍵、上、下候選定位、換頁鍵
+    - navigator            # ※ 處理輸入欄內的光標移動鍵
+    - express_editor       # ※ 編輯器，處理空格、回車上屏、回退鍵等
+  segmentors:              # 二、這批組件識別不同內容類型，將輸入碼分段
+    - ascii_segmentor      # ※ 標識西文段落
+    - matcher              # ※ 標識符合特定規則的段落，如網址、反查等
+    - abc_segmentor        # ※ 標識常規的文字段落
+    - punct_segmentor      # ※ 標識句讀段落
+    - fallback_segmentor   # ※ 標識其他未標識段落
+  translators:             # 三、這批組件翻譯特定類型的編碼段爲一組候選文字
+    - echo_translator      # ※ 沒有其他候選字時，回顯輸入碼
+    - punct_translator     # ※ 轉換標點符號
+    - script_translator    # ※ 腳本翻譯器，用於拼音等基於音節表的輸入方案
+    - reverse_lookup_translator  # ※ 反查翻譯器，用另一種編碼方案查碼
+  filters:                 # 四、這批組件過濾翻譯的結果
+    - simplifier           # ※ 繁簡轉換
+    - uniquifier           # ※ 過濾重複的候選字，有可能來自繁簡轉換
+```
 
 註：除示例代碼中引用的組件外，尚有
 
-    - fluid_editor      # ※ 句式編輯器，用於以空格斷詞、回車上屏的【注音】、【語句流】等輸入方案，替換 express_editor，也可以寫作 fluency_editor
-    - chord_composer    # ※ 和絃作曲家或曰並擊處理器，用於【宮保拼音】等多鍵並擊的輸入方案
-    - table_translator  # ※ 碼表翻譯器，用於倉頡、五筆等基於碼表的輸入方案，替換 script_translator
+```yaml
+- fluid_editor      # ※ 句式編輯器，用於以空格斷詞、回車上屏的【注音】、【語句流】等輸入方案，替換 express_editor，也可以寫作 fluency_editor
+- chord_composer    # ※ 和絃作曲家或曰並擊處理器，用於【宮保拼音】等多鍵並擊的輸入方案
+- table_translator  # ※ 碼表翻譯器，用於倉頡、五筆等基於碼表的輸入方案，替換 script_translator
+```
 
 輸入引擎把完成具體功能的邏輯拆分爲可裝卸、組合的部件。
 「加載」輸入方案，即按該處方掛接所需的功能組件、令這些組件從輸入方案定義中加載各自的設定、準備各司其職。
@@ -288,13 +292,12 @@ Rime 可以在不同會話裏使用不同輸入方案。因爲有「方案選單
 
 ### 理解 Processors
 
-Processor，意思即“處理器”。
 輸入引擎，作爲整體來看，以按鍵消息爲輸入，輸出包括三部分：
   * 一是對按鍵消息的處理結果：操作系統要一個結果、這按鍵、輪入法接是不接？
   * 二是暫存於輸入法、尚未完成處理的內容，會展現在輸入法候選窗中。
   * 三是要「上屏」的文字，並不是每按一鍵都有輸出。通常中文字都會伴隨「確認」動作而上屏，有些按鍵則會直接導致符號上屏，而這些還要視具體場景而定。
 
-第一類功能組件 `processor`s，就是比較籠統地、起着「處理」按鍵消息的作用。
+那麼第一類功能組件 `processor`s，就是比較籠統地、起着「處理」按鍵消息的作用。
 
 按鍵消息依次送往列表中的 `processor`，由他給出對按鍵的處理意見：
   * 或曰「收」、即由 Rime 響應該按鍵；
@@ -310,7 +313,7 @@ Processor，意思即“處理器”。
 
 ### 理解 Segmentors
 
-Segment 是段落的意思，segmentor 意即分段器，將用戶連續輸入的文字、數字、符號等不同內容按照需要，識別不同格式的輸入碼，將輸入碼分成若干段分而治之。
+Rime 可將文字、數字、符號等不同內容連續輸入，此時需要識別不同格式的輸入碼、將輸入碼分成若干段分而治之。
 這通過數輪代碼段劃分操作完成。每一輪操作中、一衆 `segmentor`s 分別給出起始於某一處、符合特定格式的代碼段，識別到的最長代碼段成爲本輪劃分的結果，而給出這一劃分的一個或多個 `segmentor` 組件則可爲該代碼段打上「類型標籤」；從這一新代碼段的結束位置，開始下一輪劃分，直到整個輸入碼序列劃分完畢。
 
 舉例來說，【朙月拼音】中，輸入碼 `2012nian\`，劃分爲三個編碼段：`2012`（貼 `number` 標籤）、`nian`（貼 `abc` 標籤）、`\`（貼 `punct` 標籤）。
@@ -354,7 +357,6 @@ Segment 是段落的意思，segmentor 意即分段器，將用戶連續輸入�
 
 ### 理解 Filters
 
-Filter 即過濾器。
 上一步已經收集到各個代碼段的翻譯結果，當輸入法需要在介面呈現一頁候選項時，就從最末一個代碼段的結果集中挑選、直至取夠方案中設定的頁最大候選數。
 
 每從結果集選出一條字詞、會經過一組 `filter`s 過濾。多個 `filter` 串行工作，最終產出的結果進入候選序列。
@@ -375,15 +377,17 @@ Filter 即過濾器。
 Rime 的詞典文件，命名爲 `<詞典名>.dict.yaml`，包含一份碼表及對應的規則說明。
 詞典文件的前半部份爲一份 YAML 文檔：
 
-    # 注意這裏以 --- ... 分別標記出 YAML 文檔的起始與結束位置
-    # 在 ... 標記之後的部份就不會作 YAML 文檔來解讀
+```yaml
+# 注意這裏以 --- ... 分別標記出 YAML 文檔的起始與結束位置
+# 在 ... 標記之後的部份就不會作 YAML 文檔來解讀
 
-    ---
-    name: luna_pinyin
-    version: "0.9"
-    sort: by_weight
-    use_preset_vocabulary: true
-    ...
+---
+name: luna_pinyin
+version: "0.9"
+sort: by_weight
+use_preset_vocabulary: true
+...
+```
 
 解釋：
 
@@ -398,28 +402,30 @@ Rime 的詞典文件，命名爲 `<詞典名>.dict.yaml`，包含一份碼表及
 碼表位於詞典文件中 YAML 結束標記之後的部份。
 其格式爲以製表符分隔的值（TSV），每行定義一條「文字－編碼」的對應關係：
 
-    # 單字
-    你	ni
-    我	wo
-    的	de	99%
-    的	di	1%
-    地	de	10%
-    地	di	90%
-    目	mu
-    好	hao
+```yaml
+# 單字
+你	ni
+我	wo
+的	de	99%
+的	di	1%
+地	de	10%
+地	di	90%
+目	mu
+好	hao
 
-    # 詞組
-    你我
-    你的
-    我的
-    我的天
-    天地	tian di
-    好天
-    好好地
-    目的	mu di
-    目的地	mu di di
+# 詞組
+你我
+你的
+我的
+我的天
+天地	tian di
+好天
+好好地
+目的	mu di
+目的地	mu di di
+```
 
-※注意： *不要* 從網頁複製以上代碼到實作的詞典文件！因爲網頁裏製表符被轉換成空格從而不符合 Rime 詞典要求的格式。
+※注意： **不要** 從網頁複製以上代碼到實作的詞典文件！因爲網頁裏製表符被轉換成空格從而不符合 Rime 詞典要求的格式。一些文本編輯器也會將使用者輸入的製表符自動轉換爲空格，請注意檢查和設置。
 
 碼表部份，除了以上格式的編碼行，還可以包含空行（不含任何字符）及註釋行（行首爲 # 符號）。
 
@@ -466,34 +472,38 @@ Rime 預設輸入方案正是利用這份詞彙表及自動註音工具，在不
 
 爲了充分利用【八股文】提供的詞彙，自定義的詞典應保證單字碼表收錄了符合 opencc 字形標準的常用字。特別注意，該標準對以下幾組異體字的取捨，【八股文】將這些字（包括詞組及字頻）統一到左邊一列的字形。
 
-    爲	為
-    僞	偽
-    嬀	媯
-    潙	溈
-    兇	凶
-    啓	啟
-    棱	稜
-    污	汙
-    泄	洩
-    涌	湧
-    牀	床
-    着	著
-    竈	灶
-    衆	眾
-    裏	裡
-    踊	踴
-    麪	麵
-    羣	群
-    峯	峰
+```
+爲	為
+僞	偽
+嬀	媯
+潙	溈
+兇	凶
+啓	啟
+棱	稜
+污	汙
+泄	洩
+涌	湧
+牀	床
+着	著
+竈	灶
+衆	眾
+裏	裡
+踊	踴
+麪	麵
+羣	群
+峯	峰
+```
 
 請務必在碼表中收錄左列的單字；並建議收全右列的單字。
 
 輸入法詞典往往對下列幾組字不做嚴格區分，opencc 則傾向於細分異體字的不同用法。
 
-    喫	吃
-    黴	霉
-    攷	考
-    覈	核
+```
+喫	吃
+黴	霉
+攷	考
+覈	核
+```
 
 請儘量在碼表中收全以上單字。
 
@@ -547,15 +557,17 @@ Rime 輸入方案，將 Rime 輸入法的設定整理成完善的、可分發的
 
 創建一個文件名的主體部份（「.」之前）與要定製的文件相同、次級擴展名（位於「.yaml」之前）寫作 `.custom` 的定製檔，形如：
 
-    patch:
-      "一級設定項/二級設定項/三級設定項": 新的設定值
-      "另一個設定項": 新的設定值
-      "再一個設定項": 新的設定值
-      "含列表的設定項/@0": 列表第一個元素新的設定值
-      "含列表的設定項/@last": 列表最後一個元素新的設定值
-      "含列表的設定項/@before 0": 在列表第一個元素之前插入新的設定值（不建議在補靪中使用）
-      "含列表的設定項/@after last": 在列表最後一個元素之後插入新的設定值（不建議在補靪中使用）
-      "含列表的設定項/@next": 在列表最後一個元素之後插入新的設定值（不建議在補靪中使用）
+```yaml
+patch:
+  "一級設定項/二級設定項/三級設定項": 新的設定值
+  "另一個設定項": 新的設定值
+  "再一個設定項": 新的設定值
+  "含列表的設定項/@0": 列表第一個元素新的設定值
+  "含列表的設定項/@last": 列表最後一個元素新的設定值
+  "含列表的設定項/@before 0": 在列表第一個元素之前插入新的設定值（不建議在補靪中使用）
+  "含列表的設定項/@after last": 在列表最後一個元素之後插入新的設定值（不建議在補靪中使用）
+  "含列表的設定項/@next": 在列表最後一個元素之後插入新的設定值（不建議在補靪中使用）
+```
 
 `patch` 定義了一組「補靪」，以源文件中的設定爲底本，寫入新的設定項、或以新的設定值取代舊有的值。
 
@@ -604,16 +616,18 @@ https://github.com/lotem/rimeime/tree/master/doc/tutorial
 
 第一個例子，總是最簡單的（也是最傻的）。
 
-    # Rime schema
-    # encoding: utf-8
-    #
-    # 最簡單的 Rime 輸入方案
-    #
+```yaml
+# Rime schema
+# encoding: utf-8
+#
+# 最簡單的 Rime 輸入方案
+#
 
-    schema:
-      schema_id: hello    # 注意此 ID 與文件名裏 .schema.yaml 之前的部分相同
-      name: 大家好        # 將在〔方案選單〕中顯示
-      version: "1"        # 這是文字類型而非整數或小數，如 "1.2.3"
+schema:
+  schema_id: hello    # 注意此 ID 與文件名裏 .schema.yaml 之前的部分相同
+  name: 大家好        # 將在〔方案選單〕中顯示
+  version: "1"        # 這是文字類型而非整數或小數，如 "1.2.3"
+```
 
 起首幾行是註釋。而後只有一組必要的方案描述信息。
 
@@ -624,11 +638,7 @@ https://github.com/lotem/rimeime/tree/master/doc/tutorial
 
 縮進表示設定項所屬的層次。在他處引用到此文檔中的設定項，可分別以 `schema/schema_id`, `schema/name`, `schema/version` 來指稱。
 
-我現在把寫好的方案文檔命名爲 `hello.schema.yaml`，丟進[用戶資料夾](https://github.com/rime/home/wiki/UserData 
-"小狼毫: %APPDATA%\Rime 
-鼠鬚管: ~/Library/Rime 
-ibus-rime: ~/.config/ibus/rime 
-fcitx-rime: ~/.config/fcitx/rime")，只要這一個文件就妥了；
+我現在把寫好的方案文檔命名爲 `hello.schema.yaml`，丟進[用戶資料夾](https://github.com/rime/home/wiki/UserData)，只要這一個文件就妥了；
 
 然後，啓用他。有些版本會有「方案選單設定」這個介面，在那裏勾選【大家好】這個方案即可。若無有設定介面，則按照上文《定製方案選單》一節來做。
 
@@ -641,17 +651,19 @@ fcitx-rime: ~/.config/fcitx/rime")，只要這一個文件就妥了；
 以下代碼仍是 ID 爲 `hello` 的新款輸入方案，但增加了 `schema/version` 的數值。
 以後每個版本，都以前一個版本爲基礎改寫，引文略去無有改動的部分，以突出重點。
 
-    # ...
-    schema:
-      schema_id: hello
-      name: 大家好
-      version: "2"
+```yaml
+# ...
+schema:
+  schema_id: hello
+  name: 大家好
+  version: "2"
 
-    engine:
-      processors:
-        - fluid_editor
-      segmentors:
-        - fallback_segmentor
+engine:
+  processors:
+    - fluid_editor
+  segmentors:
+    - fallback_segmentor
+```
 
 `fluid_editor` 將字符按鍵記入輸入上下文，`fallback_segmentor` 將輸入碼連綴成一段。於是重新佈署後，按下字符鍵不再直接上屏，而顯示爲輸入碼。
 
@@ -663,30 +675,34 @@ fcitx-rime: ~/.config/fcitx/rime")，只要這一個文件就妥了；
 
 第二版的【大家好】將鍵盤上所有字符都記入輸入碼，這對整句輸入有用，但是時下流行輸入法只處理編碼字符、其他字符直接上屏的形式。爲了對編碼字符做出區分，以下改用 `speller` + `express_editor` 的組合取代 `fluid_editor`：
 
-    # ...
+```yaml
+# ...
 
-    schema:
-      # ...
-      version: "3"
+schema:
+  # ...
+  version: "3"
 
-    engine:
-      processors:
-        - speller          # 把字母追加到編碼串
-        - express_editor   # 空格確認當前輸入、其他字符直接上屏
-      segmentors:
-        - fallback_segmentor
+engine:
+  processors:
+    - speller          # 把字母追加到編碼串
+    - express_editor   # 空格確認當前輸入、其他字符直接上屏
+  segmentors:
+    - fallback_segmentor
+```
 
 `speller` 默認只接受小寫拉丁字母作爲輸入碼。
 試試看，輸入其他字符如大寫字母、數字、標點，都會直接上屏。並且如果已經輸入了編碼時，下一個直接上屏的字符會將輸入碼頂上屏。
 
 再接着，創建一個最簡單的候選項——把編碼串本身作爲一個選項。故而會提供這個選項的新組件名叫 `echo_translator`。
 
-    # ...
+```yaml
+# ...
 
-    engine:
-      # ...
-      translators:
-        - echo_translator  # （無有其他結果時，）創建一個與編碼串一個模樣的候選項
+engine:
+  # ...
+  translators:
+    - echo_translator  # （無有其他結果時，）創建一個與編碼串一個模樣的候選項
+```
 
 至此，【大家好】看上去與一個真正的輸入法形似啦。只是還不會打出「大家好」哇？
 
@@ -694,41 +710,45 @@ fcitx-rime: ~/.config/fcitx/rime")，只要這一個文件就妥了；
 
 那就寫一部詞典，碼表中設定以 `hello` 作爲短語「大家好」的編碼：
 
-    # Rime dictionary
-    # encoding: utf-8
+```yaml
+# Rime dictionary
+# encoding: utf-8
 
-    ---
-    name: hello
-    version: "1"
-    sort: original
-    ...
+---
+name: hello
+version: "1"
+sort: original
+...
 
-    大家好	hello
-    再見	bye
-    再會	bye
+大家好	hello
+再見	bye
+再會	bye
+```
 
-※注意： **不要** 從網頁複製以上代碼到實作的詞典文件！因爲網頁裏製表符被轉換成空格從而不符合 Rime 詞典要求的格式。
+※注意： **不要** 從網頁複製以上代碼到實作的詞典文件！因爲網頁裏製表符被轉換成空格從而不符合 Rime 詞典要求的格式。一些文本編輯器也會將使用者輸入的製表符自動轉換爲空格，請注意檢查和設置。
 
 
 同時修改方案定義：
 
-    #...
+```yaml
+#...
 
-    schema:
-      # ...
-      version: "4"
+schema:
+  # ...
+  version: "4"
 
-    engine:
-      #...
-      segmentors:
-        - abc_segmentor       # 標記輸入碼的類型
-        - fallback_segmentor
-      translators:
-        - echo_translator
-        - table_translator    # 碼表式轉換
+engine:
+  #...
+  segmentors:
+    - abc_segmentor       # 標記輸入碼的類型
+    - fallback_segmentor
+  translators:
+    - echo_translator
+    - table_translator    # 碼表式轉換
 
-    translator:
-      dictionary: hello       # 設定 table_translator 使用的詞典名
+translator:
+  dictionary: hello       # 設定 table_translator 使用的詞典名
+```
 
 工作流程是這樣的：
 
@@ -752,17 +772,19 @@ fcitx-rime: ~/.config/fcitx/rime")，只要這一個文件就妥了；
 
 增加一部 `selector`，即可實現以數字鍵選字。
 
-    schema:
-      # ...
-      version: "5"
+```yaml
+schema:
+  # ...
+  version: "5"
 
-    engine:
-      processors:
-        - speller
-        - selector         # 選字、換頁
-        - navigator        # 移動插入點
-        - express_editor
-      # ...
+engine:
+  processors:
+    - speller
+    - selector         # 選字、換頁
+    - navigator        # 移動插入點
+    - express_editor
+  # ...
+```
 
 `selector` 除了數字鍵，還響應前次頁、上下方向鍵。因此選擇第二候選「再會」，既可以按數字 `2`，又可以按方向鍵「↓」將「再會」高亮、再按空格鍵確認。
 
@@ -770,60 +792,64 @@ fcitx-rime: ~/.config/fcitx/rime")，只要這一個文件就妥了；
 
 接下來向詞典添加一組重碼，以檢驗換頁的效果：
 
-    ---
-    name: hello
-    version: "2"
-    sort: original
-    ...
+```yaml
+---
+name: hello
+version: "2"
+sort: original
+...
 
-    大家好	hello
-    再見	bye
-    再會	bye
+大家好	hello
+再見	bye
+再會	bye
 
-    星期一	monday
-    星期二	tuesday
-    星期三	wednesday
-    星期四	thursday
-    星期五	friday
-    星期六	saturday
-    星期日	sunday
+星期一	monday
+星期二	tuesday
+星期三	wednesday
+星期四	thursday
+星期五	friday
+星期六	saturday
+星期日	sunday
 
-    星期一	weekday
-    星期二	weekday
-    星期三	weekday
-    星期四	weekday
-    星期五	weekday
-    星期六	weekday
-    星期日	weekday
+星期一	weekday
+星期二	weekday
+星期三	weekday
+星期四	weekday
+星期五	weekday
+星期六	weekday
+星期日	weekday
+```
 
 默認每頁候選數爲 5，輸入 `weekday`，顯示「星期一」至「星期五」。再敲 `Page_Down` 顯示第二頁後選詞「星期六、星期日」。
 
 ### 輸出中文標點
 
-    schema:
-      # ...
-      version: "6"
+```yaml
+schema:
+  # ...
+  version: "6"
 
-    engine:
-      processors:
-        - speller
-        - punctuator        # 處理符號按鍵
-        - selector
-        - navigator
-        - express_editor
-      segmentors:
-        - abc_segmentor
-        - punct_segmentor   # 劃界，與前後方的其他編碼區分開
-        - fallback_segmentor
-      translators:
-        - echo_translator
-        - punct_translator  # 轉換
-        - table_translator
+engine:
+  processors:
+    - speller
+    - punctuator        # 處理符號按鍵
+    - selector
+    - navigator
+    - express_editor
+  segmentors:
+    - abc_segmentor
+    - punct_segmentor   # 劃界，與前後方的其他編碼區分開
+    - fallback_segmentor
+  translators:
+    - echo_translator
+    - punct_translator  # 轉換
+    - table_translator
 
-    # ...
+# ...
 
-    punctuator:             # 設定符號表，這裏直接導入預設的
-      import_preset: default
+punctuator:             # 設定符號表，這裏直接導入預設的
+  import_preset: default
+```
 
 這次的修改，要注意 `punctuator`, `punct_segmentor`, `punct_translator` 相對於其他組件的位置。
 
@@ -846,44 +872,46 @@ Rime 提供了 `key_binder` 組件，他能夠在一定條件下，將指定按�
 
 最終的代碼如下：
 
-    schema:
-      schema_id: hello
-      name: 大家好
-      version: "7"
+```yaml
+schema:
+  schema_id: hello
+  name: 大家好
+  version: "7"
 
-    engine:
-      processors:
-        - key_binder  # 搶在其他 processor 處理之前判定是否換頁用的符號鍵
-        - speller
-        - punctuator  # 否則「，。」就會由此上屏
-        - selector
-        - navigator
-        - express_editor
-      segmentors:
-        - abc_segmentor
-        - punct_segmentor
-        - fallback_segmentor
-      translators:
-        - echo_translator
-        - punct_translator
-        - table_translator
+engine:
+  processors:
+    - key_binder  # 搶在其他 processor 處理之前判定是否換頁用的符號鍵
+    - speller
+    - punctuator  # 否則「，。」就會由此上屏
+    - selector
+    - navigator
+    - express_editor
+  segmentors:
+    - abc_segmentor
+    - punct_segmentor
+    - fallback_segmentor
+  translators:
+    - echo_translator
+    - punct_translator
+    - table_translator
 
-    translator:
-      dictionary: hello
+translator:
+  dictionary: hello
 
-    punctuator:
-      import_preset: default
+punctuator:
+  import_preset: default
 
-    key_binder:
-      bindings:             # 每條定義包含條件、接收按鍵（IBus 規格的鍵名，可加修飾符，如「Control+Return」）、發送按鍵
+key_binder:
+  bindings:             # 每條定義包含條件、接收按鍵（IBus 規格的鍵名，可加修飾符，如「Control+Return」）、發送按鍵
 
-        - when:   paging    # 僅當已發生向後換頁時，
-          accept: comma     # 將「逗號」鍵……
-          send:   Page_Up   # 關聯到「向前換頁」；於是 navigator 將收到一發 Page_Up
+    - when:   paging    # 僅當已發生向後換頁時，
+      accept: comma     # 將「逗號」鍵……
+      send:   Page_Up   # 關聯到「向前換頁」；於是 navigator 將收到一發 Page_Up
 
-        - when:   has_menu  # 只要有候選字即滿足條件
-          accept: period
-          send:   Page_Down
+    - when:   has_menu  # 只要有候選字即滿足條件
+      accept: period
+      send:   Page_Down
+```
 
 
 ## 【二】修煉之道
@@ -896,50 +924,52 @@ Rime 提供了 `key_binder` 組件，他能夠在一定條件下，將指定按�
 
 用 `punctuator` 這一套組件，就可實現一款鍵盤輸入法：
 
-    # Rime schema
-    # encoding: utf-8
+```yaml
+# Rime schema
+# encoding: utf-8
 
-    schema:
-      schema_id: numbers
-      name: 數字之道
-      version: "1"
+schema:
+  schema_id: numbers
+  name: 數字之道
+  version: "1"
 
-    engine:
-      processors:
-        - punctuator
-        - express_editor
-      segmentors:
-        - punct_segmentor
-      translators:
-        - punct_translator
+engine:
+  processors:
+    - punctuator
+    - express_editor
+  segmentors:
+    - punct_segmentor
+  translators:
+    - punct_translator
 
-    punctuator:
-      half_shape: &symtable
-        "1" : 一
-        "2" : 二
-        "3" : 三
-        "4" : 四
-        "5" : 五
-        "6" : 六
-        "7" : 七
-        "8" : 八
-        "9" : 九
-        "0" : 〇
-        "s" : 十
-        "b" : 百
-        "q" : 千
-        "w" : 萬
-        "n" : 年
-        "y" : [ 月, 元, 億 ]
-        "r" : 日
-        "x" : 星期
-        "j" : 角
-        "f" : 分
-        "z" : [ 之, 整 ]
-        "d" : 第
-        "h" : 號
-        "." : 點
-      full_shape: *symtable
+punctuator:
+  half_shape: &symtable
+    "1" : 一
+    "2" : 二
+    "3" : 三
+    "4" : 四
+    "5" : 五
+    "6" : 六
+    "7" : 七
+    "8" : 八
+    "9" : 九
+    "0" : 〇
+    "s" : 十
+    "b" : 百
+    "q" : 千
+    "w" : 萬
+    "n" : 年
+    "y" : [ 月, 元, 億 ]
+    "r" : 日
+    "x" : 星期
+    "j" : 角
+    "f" : 分
+    "z" : [ 之, 整 ]
+    "d" : 第
+    "h" : 號
+    "." : 點
+  full_shape: *symtable
+```
 
 對，所謂「鍵盤輸入法」，就是按鍵和字直接對應的輸入方式。
 
@@ -962,15 +992,17 @@ Rime 裏的符號有「全角」、「半角」兩種狀態。本方案裏暫不
 
 靈機一動，不如利用「全、半角」模式來區分「大、小寫」中文數字！
 
-    schema:
-      # ...
-      version: "2"
+```yaml
+schema:
+  # ...
+  version: "2"
 
-    switches:
-      - name: full_shape
-        states: [ 小寫, 大寫 ]
+switches:
+  - name: full_shape
+    states: [ 小寫, 大寫 ]
 
-    # ...
+# ...
+```
 
 先來定義狀態開關：`0` 態改「半角」爲「小寫」，`1` 態改「全角」爲「大寫」。
 
@@ -978,79 +1010,83 @@ Rime 裏的符號有「全角」、「半角」兩種狀態。本方案裏暫不
 
 接着給 `half_shape`、`full_shape` 定義不同的符號表：
 
-    punctuator:
-      half_shape:
-        "1" : 一
-        "2" : 二
-        "3" : 三
-        "4" : 四
-        "5" : 五
-        "6" : 六
-        "7" : 七
-        "8" : 八
-        "9" : 九
-        "0" : 〇
-        "s" : 十
-        "b" : 百
-        "q" : 千
-        "w" : 萬
-        "n" : 年
-        "y" : [ 月, 元, 億 ]
-        "r" : 日
-        "x" : 星期
-        "j" : 角
-        "f" : 分
-        "z" : [ 之, 整 ]
-        "d" : 第
-        "h" : 號
-        "." : 點
-      full_shape:
-        "1" : 壹
-        "2" : 貳
-        "3" : 參
-        "4" : 肆
-        "5" : 伍
-        "6" : 陸
-        "7" : 柒
-        "8" : 捌
-        "9" : 玖
-        "0" : 零
-        "s" : 拾
-        "b" : 佰
-        "q" : 仟
-        "w" : 萬
-        "n" : 年
-        "y" : [ 月, 圓, 億 ]
-        "r" : 日
-        "x" : 星期
-        "j" : 角
-        "f" : 分
-        "z" : [ 之, 整 ]
-        "d" : 第
-        "h" : 號
-        "." : 點
+```yaml
+punctuator:
+  half_shape:
+    "1" : 一
+    "2" : 二
+    "3" : 三
+    "4" : 四
+    "5" : 五
+    "6" : 六
+    "7" : 七
+    "8" : 八
+    "9" : 九
+    "0" : 〇
+    "s" : 十
+    "b" : 百
+    "q" : 千
+    "w" : 萬
+    "n" : 年
+    "y" : [ 月, 元, 億 ]
+    "r" : 日
+    "x" : 星期
+    "j" : 角
+    "f" : 分
+    "z" : [ 之, 整 ]
+    "d" : 第
+    "h" : 號
+    "." : 點
+  full_shape:
+    "1" : 壹
+    "2" : 貳
+    "3" : 參
+    "4" : 肆
+    "5" : 伍
+    "6" : 陸
+    "7" : 柒
+    "8" : 捌
+    "9" : 玖
+    "0" : 零
+    "s" : 拾
+    "b" : 佰
+    "q" : 仟
+    "w" : 萬
+    "n" : 年
+    "y" : [ 月, 圓, 億 ]
+    "r" : 日
+    "x" : 星期
+    "j" : 角
+    "f" : 分
+    "z" : [ 之, 整 ]
+    "d" : 第
+    "h" : 號
+    "." : 點
+```
 
 哈，調出選單切換一下大小寫，輸出的字全變樣！酷。
 
 但是要去選單切換，總不如按下 `Shift` 就全都有了：
 
-    punctuator:
-      half_shape:
-        # ... 添加以下這些
-        "!" : 壹
-        "@" : 貳
-        "#" : 參
-        "$" : [ 肆, ￥, "$", "€", "£" ]
-        "%" : [ 伍, 百分之 ]
-        "^" : 陸
-        "&" : 柒
-        "*" : 捌
-        "(" : 玖
-        ")" : 零
-        "S" : 拾
-        "B" : 佰
-        "Q" : 仟
-        "Y" : 圓
+```yaml
+punctuator:
+  half_shape:
+    # ... 添加以下這些
+    "!" : 壹
+    "@" : 貳
+    "#" : 參
+    "$" : [ 肆, ￥, "$", "€", "£" ]
+    "%" : [ 伍, 百分之 ]
+    "^" : 陸
+    "&" : 柒
+    "*" : 捌
+    "(" : 玖
+    ")" : 零
+    "S" : 拾
+    "B" : 佰
+    "Q" : 仟
+    "Y" : 圓
+```
 
 於是在「小寫」態，只要按 `Shift` + 數字鍵即可打出大寫數字。
 
@@ -1058,23 +1094,27 @@ Rime 裏的符號有「全角」、「半角」兩種狀態。本方案裏暫不
 
 這反映出兩個問題。一是 `selector` 組件缺席使得選字、移動選字光標的動作未得到響應。立即加上：
 
-    # ...
+```yaml
+# ...
 
-    engine:
-      processors:
-        - punctuator
-        - selector        # 加在這裏
-        - express_editor
-      # ...
+engine:
+  processors:
+    - punctuator
+    - selector        # 加在這裏
+    - express_editor
+  # ...
+```
 
 因爲要讓 `punctuator` 來轉換數字鍵，所以 `selector` 得放在他後頭。
 
 好。二一個問題還在：無法用數字序號選字。爲解決這個衝突，改用閒置的字母鍵來選字：
 
-    # ...
+```yaml
+# ...
 
-    menu:
-      alternative_select_keys: "acegi"
+menu:
+  alternative_select_keys: "acegi"
+```
 
 完工。
 
@@ -1088,105 +1128,107 @@ Rime 裏的符號有「全角」、「半角」兩種狀態。本方案裏暫不
 
 現在來把【數字之道】改成拼音→中文數字的變換。
 
-    schema:
-      schema_id: numbers
-      name: 數字之道
-      version: "3"
+```yaml
+schema:
+  schema_id: numbers
+  name: 數字之道
+  version: "3"
 
-    engine:
-      processors:
-        - speller
-        - punctuator
-        - selector
-        - express_editor
-      segmentors:
-        - abc_segmentor
-        - punct_segmentor
-      translators:
-        - punct_translator
-        - script_translator
+engine:
+  processors:
+    - speller
+    - punctuator
+    - selector
+    - express_editor
+  segmentors:
+    - abc_segmentor
+    - punct_segmentor
+  translators:
+    - punct_translator
+    - script_translator
 
-    translator:
-      dictionary: numbers
+translator:
+  dictionary: numbers
 
-    punctuator:
-      half_shape: &symtable
-        "!" : 壹
-        "@" : 貳
-        "#" : 參
-        "$" : [ 肆, ￥, "$", "€", "£" ]
-        "%" : [ 伍, 百分之 ]
-        "^" : 陸
-        "&" : 柒
-        "*" : 捌
-        "(" : 玖
-        ")" : 零
-        "S" : 拾
-        "B" : 佰
-        "Q" : 仟
-        "W" : 萬
-        "N" : 年
-        "Y" : [ 月, 圓, 億 ]
-        "R" : 日
-        "X" : 星期
-        "J" : 角
-        "F" : 分
-        "Z" : [ 之, 整 ]
-        "D" : 第
-        "H" : 號
-        "." : 點
-      full_shape: *symtable
+punctuator:
+  half_shape: &symtable
+    "!" : 壹
+    "@" : 貳
+    "#" : 參
+    "$" : [ 肆, ￥, "$", "€", "£" ]
+    "%" : [ 伍, 百分之 ]
+    "^" : 陸
+    "&" : 柒
+    "*" : 捌
+    "(" : 玖
+    ")" : 零
+    "S" : 拾
+    "B" : 佰
+    "Q" : 仟
+    "W" : 萬
+    "N" : 年
+    "Y" : [ 月, 圓, 億 ]
+    "R" : 日
+    "X" : 星期
+    "J" : 角
+    "F" : 分
+    "Z" : [ 之, 整 ]
+    "D" : 第
+    "H" : 號
+    "." : 點
+  full_shape: *symtable
+```
 
 符號表裏，把小寫字母、數字鍵都空出來了。小寫字母用來拼音，數字鍵用來選重。重點是本次用了 `script_translator` 這組件。與 `table_translator` 相似，該組件與 `translator/dictionary` 指名的詞典相關聯。
 
 編製詞典：
 
-    # Rime dictionary
-    # encoding: utf-8
+```yaml
+# Rime dictionary
+# encoding: utf-8
 
-    ---
-    name: numbers
-    version: "1"
-    sort: by_weight
-    use_preset_vocabulary: true
-    ...
+---
+name: numbers
+version: "1"
+sort: by_weight
+use_preset_vocabulary: true
+...
 
-    一	yi
-    二	er
-    三	san
-    四	si
-    五	wu
-    六	liu
-    七	qi
-    八	ba
-    九	jiu
-    〇	ling
-    零	ling
-    十	shi
-    百	bai
-    千	qian
-    萬	wan
-    億	yi
-    年	nian
-    月	yue
-    日	ri
-    星	xing
-    期	qi
-    時	shi
-    分	fen
-    秒	miao
-    元	yuan
-    角	jiao
-    之	zhi
-    整	zheng
-    第	di
-    號	hao
-    點	dian
-    是	shi
+一	yi
+二	er
+三	san
+四	si
+五	wu
+六	liu
+七	qi
+八	ba
+九	jiu
+〇	ling
+零	ling
+十	shi
+百	bai
+千	qian
+萬	wan
+億	yi
+年	nian
+月	yue
+日	ri
+星	xing
+期	qi
+時	shi
+分	fen
+秒	miao
+元	yuan
+角	jiao
+之	zhi
+整	zheng
+第	di
+號	hao
+點	dian
+是	shi
+```
 
-※注意： **不要** 從網頁複製以上代碼到實作的詞典文件！因爲網頁裏製表符被轉換成空格從而不符合 Rime 詞典要求的格式。
-
-※注意： 常用編輯器如 VS editor 以及 Notepad++等軟體遇見 \*.yaml 檔案時會預設禁止 tab(ascii hex code 09)的使用，而將使用者鍵入的 tab 按鍵轉換成兩個空白(ascii hex code 20 20)。請一定要使用製表符來進行詞典文件的編輯。
+※注意： **不要** 從網頁複製以上代碼到實作的詞典文件！因爲網頁裏製表符被轉換成空格從而不符合 Rime 詞典要求的格式。一些文本編輯器也會將使用者輸入的製表符自動轉換爲空格，請注意檢查和設置。
 
 碼表裏給出了一個「示例」規格的小字集。其中包含幾組重碼字。
 
@@ -1212,16 +1254,18 @@ Rime 裏的符號有「全角」、「半角」兩種狀態。本方案裏暫不
 
 添加拼寫運算規則：
 
-    schema:
-      # ...
-      version: "4"
+```yaml
+schema:
+  # ...
+  version: "4"
 
-    #...
+#...
 
-    speller:
-      algebra:
-        - 'abbrev/^([a-z]).+$/$1/'
-        - 'abbrev/^([zcs]h).+$/$1/'
+speller:
+  algebra:
+    - 'abbrev/^([a-z]).+$/$1/'
+    - 'abbrev/^([zcs]h).+$/$1/'
+```
 
 如此 Rime 便知，除了碼表裏那些拼音，還有若干簡碼也是行得通的拼寫形式。再輸入 `xqw`，Rime 將他拆開 `x'q'w`，再默默對應到音節碼 `xing'qi'wan`、`xing'qi'wu`、`xing'qian'wan` 等等，一翻詞典就得到了一個好詞「星期五」，而其他的組合都說不通。
 
@@ -1233,19 +1277,21 @@ Rime 裏的符號有「全角」、「半角」兩種狀態。本方案裏暫不
 
 好辦。如果某些詞彙在方案裏很重要，【八股文】又未收錄，那麼，請添加至碼表：
 
-    ---
-    name: numbers
-    version: "2"
-    sort: by_weight
-    use_preset_vocabulary: true
-    ...
+```yaml
+---
+name: numbers
+version: "2"
+sort: by_weight
+use_preset_vocabulary: true
+...
 
-    # ...
+# ...
 
-    四是四
-    十是十
-    十四是十四
-    四十是四十
+四是四
+十是十
+十四是十四
+四十是四十
+```
 
 善哉。演示完畢。當然休想就此把 Rime 全盤掌握了。一本《指南書》，若能讓讀者入門，我止說「善哉〜」
 
@@ -1266,141 +1312,143 @@ Rime 裏的符號有「全角」、「半角」兩種狀態。本方案裏暫不
 
 設計一款【智能 ABC 雙拼】輸入方案做練習！
 
-    # Rime schema
-    # encoding: utf-8
+```yaml
+# Rime schema
+# encoding: utf-8
 
-    schema:
-      schema_id: double_pinyin_abc  # 專有的方案標識
-      name: 智能 ABC 雙拼
-      version: "0.9"
-      author:
-        - 佛振 <chen.sst@gmail.com>
-      description: |
-        朙月拼音，兼容智能 ABC 雙拼方案。
+schema:
+  schema_id: double_pinyin_abc  # 專有的方案標識
+  name: 智能 ABC 雙拼
+  version: "0.9"
+  author:
+    - 佛振 <chen.sst@gmail.com>
+  description: |
+    朙月拼音，兼容智能 ABC 雙拼方案。
 
-    switches:
-      - name: ascii_mode
-        reset: 0
-        states: [ 中文, 西文 ]
-      - name: full_shape
-        states: [ 半角, 全角 ]
-      - name: simplification
-        states: [ 漢字, 汉字 ]
+switches:
+  - name: ascii_mode
+    reset: 0
+    states: [ 中文, 西文 ]
+  - name: full_shape
+    states: [ 半角, 全角 ]
+  - name: simplification
+    states: [ 漢字, 汉字 ]
 
-    engine:
-      processors:
-        - ascii_composer
-        - recognizer
-        - key_binder
-        - speller
-        - punctuator
-        - selector
-        - navigator
-        - express_editor
-      segmentors:
-        - ascii_segmentor
-        - matcher
-        - abc_segmentor
-        - punct_segmentor
-        - fallback_segmentor
-      translators:
-        - echo_translator
-        - punct_translator
-        - script_translator
-        - reverse_lookup_translator
-      filters:
-        - simplifier
-        - uniquifier
+engine:
+  processors:
+    - ascii_composer
+    - recognizer
+    - key_binder
+    - speller
+    - punctuator
+    - selector
+    - navigator
+    - express_editor
+  segmentors:
+    - ascii_segmentor
+    - matcher
+    - abc_segmentor
+    - punct_segmentor
+    - fallback_segmentor
+  translators:
+    - echo_translator
+    - punct_translator
+    - script_translator
+    - reverse_lookup_translator
+  filters:
+    - simplifier
+    - uniquifier
 
-    speller:
-      alphabet: zyxwvutsrqponmlkjihgfedcba  # 呃，倒背字母表完全是個人喜好
-      delimiter: " '"  # 隔音符號用「'」；第一位的空白用來自動插入到音節邊界處
-      algebra:  # 拼寫運算規則，這個纔是實現雙拼方案的重點。寫法有很多種，當然也可以把四百多個音節碼一條一條地列舉
-        - erase/^xx$/             # 碼表中有幾個拼音不明的字，編碼成 xx 了，消滅他
-        - derive/^([jqxy])u$/$1v/
-        - xform/^zh/A/            # 替換聲母鍵，用大寫以防與原有的字母混淆
-        - xform/^ch/E/
-        - xform/^sh/V/
-        - xform/^([aoe].*)$/O$1/  # 添上固定的零聲母 o，先標記爲大寫 O
-        - xform/ei$/Q/            # 替換韻母鍵
-        - xform/ian$/W/           # ※2
-        - xform/er$|iu$/R/        # 對應兩種韻母的；音節 er 現在變爲 OR 了
-        - xform/[iu]ang$/T/       # ※1
-        - xform/ing$/Y/
-        - xform/uo$/O/
-        - xform/uan$/P/           # ※3
-        - xform/i?ong$/S/
-        - xform/[iu]a$/D/
-        - xform/en$/F/
-        - xform/eng$/G/
-        - xform/ang$/H/           # 檢查一下在此之前是否已轉換過了帶介音的 ang；好，※1 處有了
-        - xform/an$/J/            # 如果※2、※3 還無有出現在上文中，應該把他們提到本行之前
-        - xform/iao$/Z/           # 對——像這樣讓 iao 提前出場
-        - xform/ao$/K/
-        - xform/in$|uai$/C/       # 讓 uai 提前出場
-        - xform/ai$/L/
-        - xform/ie$/X/
-        - xform/ou$/B/
-        - xform/un$/N/
-        - xform/[uv]e$|ui$/M/
-        - xlit/QWERTYOPASDFGHJKLZXCVBNM/qwertyopasdfghjklzxcvbnm/  # 最後把雙拼碼全部變小寫
+speller:
+  alphabet: zyxwvutsrqponmlkjihgfedcba  # 呃，倒背字母表完全是個人喜好
+  delimiter: " '"  # 隔音符號用「'」；第一位的空白用來自動插入到音節邊界處
+  algebra:  # 拼寫運算規則，這個纔是實現雙拼方案的重點。寫法有很多種，當然也可以把四百多個音節碼一條一條地列舉
+    - erase/^xx$/             # 碼表中有幾個拼音不明的字，編碼成 xx 了，消滅他
+    - derive/^([jqxy])u$/$1v/
+    - xform/^zh/A/            # 替換聲母鍵，用大寫以防與原有的字母混淆
+    - xform/^ch/E/
+    - xform/^sh/V/
+    - xform/^([aoe].*)$/O$1/  # 添上固定的零聲母 o，先標記爲大寫 O
+    - xform/ei$/Q/            # 替換韻母鍵
+    - xform/ian$/W/           # ※2
+    - xform/er$|iu$/R/        # 對應兩種韻母的；音節 er 現在變爲 OR 了
+    - xform/[iu]ang$/T/       # ※1
+    - xform/ing$/Y/
+    - xform/uo$/O/
+    - xform/uan$/P/           # ※3
+    - xform/i?ong$/S/
+    - xform/[iu]a$/D/
+    - xform/en$/F/
+    - xform/eng$/G/
+    - xform/ang$/H/           # 檢查一下在此之前是否已轉換過了帶介音的 ang；好，※1 處有了
+    - xform/an$/J/            # 如果※2、※3 還無有出現在上文中，應該把他們提到本行之前
+    - xform/iao$/Z/           # 對——像這樣讓 iao 提前出場
+    - xform/ao$/K/
+    - xform/in$|uai$/C/       # 讓 uai 提前出場
+    - xform/ai$/L/
+    - xform/ie$/X/
+    - xform/ou$/B/
+    - xform/un$/N/
+    - xform/[uv]e$|ui$/M/
+    - xlit/QWERTYOPASDFGHJKLZXCVBNM/qwertyopasdfghjklzxcvbnm/  # 最後把雙拼碼全部變小寫
 
-    translator:
-      dictionary: luna_pinyin     # 與【朙月拼音】共用詞典
-      prism: double_pinyin_abc    # prism 要以本輸入方案的名稱來命名，以免把朙月拼音的拼寫映射表覆蓋掉
-      preedit_format:             # 這段代碼用來將輸入的雙拼碼反轉爲全拼顯示；待見雙拼碼的可以把這段拿掉
-        - xform/o(\w)/0$1/        # 零聲母先改爲 0，以方便後面的轉換
-        - xform/(\w)q/$1ei/       # 雙拼第二碼轉換爲韻母
-        - xform/(\w)n/$1un/       # 提前轉換雙拼碼 n 和 g，因爲轉換後的拼音裏就快要出現這兩個字母了，那時將難以分辨出雙拼碼
-        - xform/(\w)g/$1eng/      # 當然也可以採取事先將雙拼碼變爲大寫的辦法來與轉換過的拼音做區分，可誰讓我是高手呢
-        - xform/(\w)w/$1ian/
-        - xform/([dtnljqx])r/$1iu/  # 對應多種韻母的雙拼碼，按搭配的聲母做區分（最好別用排除式如 [^o]r 容易出狀況）
-        - xform/0r/0er/             # 另一種情況，注意先不消除 0，以防後面把 e 當作聲母轉換爲 ch
-        - xform/([nljqx])t/$1iang/
-        - xform/(\w)t/$1uang/       # 上一行已經把對應到 iang 的雙拼碼 t 消滅，於是這裏不用再列舉相配的聲母
-        - xform/(\w)y/$1ing/
-        - xform/([dtnlgkhaevrzcs])o/$1uo/
-        - xform/(\w)p/$1uan/
-        - xform/([jqx])s/$1iong/
-        - xform/(\w)s/$1ong/
-        - xform/([gkhaevrzcs])d/$1ua/
-        - xform/(\w)d/$1ia/
-        - xform/(\w)f/$1en/
-        - xform/(\w)h/$1ang/
-        - xform/(\w)j/$1an/
-        - xform/(\w)k/$1ao/       # 默默檢查：雙拼碼 o 已經轉換過了
-        - xform/(\w)l/$1ai/
-        - xform/(\w)z/$1iao/
-        - xform/(\w)x/$1ie/
-        - xform/(\w)b/$1ou/
-        - xform/([nl])m/$1ve/
-        - xform/([jqxy])m/$1ue/
-        - xform/(\w)m/$1ui/
-        - "xform/(^|[ '])a/$1zh/"  # 復原聲母，音節開始處的雙拼字母 a 改寫爲 zh；其他位置的才真正是 a
-        - "xform/(^|[ '])e/$1ch/"
-        - "xform/(^|[ '])v/$1sh/"
-        - xform/0(\w)/$1/          # 好了，現在可以把零聲母拿掉啦
-        - xform/([nljqxy])v/$1ü/   # 這樣纔是漢語拼音 :-)
+translator:
+  dictionary: luna_pinyin     # 與【朙月拼音】共用詞典
+  prism: double_pinyin_abc    # prism 要以本輸入方案的名稱來命名，以免把朙月拼音的拼寫映射表覆蓋掉
+  preedit_format:             # 這段代碼用來將輸入的雙拼碼反轉爲全拼顯示；待見雙拼碼的可以把這段拿掉
+    - xform/o(\w)/0$1/        # 零聲母先改爲 0，以方便後面的轉換
+    - xform/(\w)q/$1ei/       # 雙拼第二碼轉換爲韻母
+    - xform/(\w)n/$1un/       # 提前轉換雙拼碼 n 和 g，因爲轉換後的拼音裏就快要出現這兩個字母了，那時將難以分辨出雙拼碼
+    - xform/(\w)g/$1eng/      # 當然也可以採取事先將雙拼碼變爲大寫的辦法來與轉換過的拼音做區分，可誰讓我是高手呢
+    - xform/(\w)w/$1ian/
+    - xform/([dtnljqx])r/$1iu/  # 對應多種韻母的雙拼碼，按搭配的聲母做區分（最好別用排除式如 [^o]r 容易出狀況）
+    - xform/0r/0er/             # 另一種情況，注意先不消除 0，以防後面把 e 當作聲母轉換爲 ch
+    - xform/([nljqx])t/$1iang/
+    - xform/(\w)t/$1uang/       # 上一行已經把對應到 iang 的雙拼碼 t 消滅，於是這裏不用再列舉相配的聲母
+    - xform/(\w)y/$1ing/
+    - xform/([dtnlgkhaevrzcs])o/$1uo/
+    - xform/(\w)p/$1uan/
+    - xform/([jqx])s/$1iong/
+    - xform/(\w)s/$1ong/
+    - xform/([gkhaevrzcs])d/$1ua/
+    - xform/(\w)d/$1ia/
+    - xform/(\w)f/$1en/
+    - xform/(\w)h/$1ang/
+    - xform/(\w)j/$1an/
+    - xform/(\w)k/$1ao/       # 默默檢查：雙拼碼 o 已經轉換過了
+    - xform/(\w)l/$1ai/
+    - xform/(\w)z/$1iao/
+    - xform/(\w)x/$1ie/
+    - xform/(\w)b/$1ou/
+    - xform/([nl])m/$1ve/
+    - xform/([jqxy])m/$1ue/
+    - xform/(\w)m/$1ui/
+    - "xform/(^|[ '])a/$1zh/"  # 復原聲母，音節開始處的雙拼字母 a 改寫爲 zh；其他位置的才真正是 a
+    - "xform/(^|[ '])e/$1ch/"
+    - "xform/(^|[ '])v/$1sh/"
+    - xform/0(\w)/$1/          # 好了，現在可以把零聲母拿掉啦
+    - xform/([nljqxy])v/$1ü/   # 這樣纔是漢語拼音 :-)
 
-    reverse_lookup:
-      dictionary: cangjie5
-      prefix: "`"
-      tips: 〔倉頡〕
-      preedit_format:
-        - "xlit|abcdefghijklmnopqrstuvwxyz|日月金木水火土竹戈十大中一弓人心手口尸廿山女田難卜符|"
-      comment_format:
-        - xform/([nl])v/$1ü/
+reverse_lookup:
+  dictionary: cangjie5
+  prefix: "`"
+  tips: 〔倉頡〕
+  preedit_format:
+    - "xlit|abcdefghijklmnopqrstuvwxyz|日月金木水火土竹戈十大中一弓人心手口尸廿山女田難卜符|"
+  comment_format:
+    - xform/([nl])v/$1ü/
 
-    punctuator:
-      import_preset: default
+punctuator:
+  import_preset: default
 
-    key_binder:
-      import_preset: default
+key_binder:
+  import_preset: default
 
-    recognizer:
-      import_preset: default
-      patterns:
-        reverse_lookup: "`[a-z]*$"
+recognizer:
+  import_preset: default
+  patterns:
+    reverse_lookup: "`[a-z]*$"
+```
 
 完畢。
 
