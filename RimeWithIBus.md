@@ -59,6 +59,10 @@ Rime 已收錄於 [Ubuntu 12.10 (Quantal Quetzal)](http://old-releases.ubuntu.co
     
     sudo zypper in ibus-rime
 
+## Solus
+
+    sudo eopkg it ibus-rime
+
 有手藝、有時間、熱心腸的Linux技術高手！ 請幫我把Rime打包到你喜愛的Linux發行版，分享給其他同學吧。
 
 謝謝你們！
