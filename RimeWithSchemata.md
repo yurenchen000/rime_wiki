@@ -129,7 +129,7 @@ http://www.boost.org/doc/libs/1_49_0/libs/regex/doc/html/boost_regex/syntax/perl
   * 【鼠鬚管】  `"/Library/Input Methods/Squirrel.app/Contents/SharedSupport/"`
 
 [用戶資料夾](https://github.com/rime/home/wiki/UserData)
-  * 【中州韻】  `~/.config/ibus/rime/` （0.9.1 以下版本爲 `~/.ibus/rime/`；fcitx5 为 `~/.local/fcitx5/rime/`）
+  * 【中州韻】  `~/.config/ibus/rime/` （0.9.1 以下版本爲 `~/.ibus/rime/`；fcitx5 为 `~/.local/share/fcitx5/rime/`）
   * 【小狼毫】  `%APPDATA%\Rime`
   * 【鼠鬚管】  `~/Library/Rime/`
 
