@@ -47,6 +47,13 @@ Rime 已收錄於 [Ubuntu 12.10 (Quantal Quetzal)](http://old-releases.ubuntu.co
     # 中古漢語拼音
     sudo apt-get install librime-data-zyenpheng
 
+启用输入法:
+
+   Settings > Keyboard > Input Sources, Click `+`
+     Select `Chinese` > `Chinese(Rime)`, Click `Add`
+
+  Note: `ibus-setup` add rime not work on Ubuntu.
+
 ## Fedora 22+
 
     sudo dnf install ibus-rime
